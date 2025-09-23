@@ -1,0 +1,269 @@
+2025.09.22 21:07:30.496440 [ 21624529 ] {} <Warning> Context: Maximum number of threads is lower than 30000. There could be problems with handling a lot of simultaneous queries.
+2025.09.22 21:07:30.498277 [ 21624529 ] {} <Warning> ConfigProcessor: Include not found: networks
+2025.09.22 21:07:30.501885 [ 21624529 ] {} <Warning> ConfigProcessor: Include not found: networks
+2025.09.22 21:07:30.526085 [ 21624529 ] {} <Error> Application: Caught exception while loading metadata: Code: 137. DB::Exception: "default" disk path should be provided in <path> not it <storage_configuration>. (UNKNOWN_ELEMENT_IN_CONFIG), Stack trace (when copying this message, always include the lines below):
+
+0. Poco::Exception::Exception(String const&, int) @ 0x0000000110f259bc
+1. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000001059d30ac
+2. DB::Exception::Exception(String&&, int, String, bool) @ 0x00000001005a3498
+3. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x00000001005a30a8
+4. DB::Exception::Exception<>(int, FormatStringHelperImpl<>) @ 0x00000001005afb78
+5. DB::loadDiskLocalConfig(String const&, Poco::Util::AbstractConfiguration const&, String const&, std::shared_ptr<DB::Context const>, String&, unsigned long long&) @ 0x0000000109c0e84c
+6. std::shared_ptr<DB::IDisk> std::__function::__policy_invoker<std::shared_ptr<DB::IDisk> (String const&, Poco::Util::AbstractConfiguration const&, String const&, std::shared_ptr<DB::Context const>, std::map<String, std::shared_ptr<DB::IDisk>, std::less<String>, std::allocator<std::pair<String const, std::shared_ptr<DB::IDisk>>>> const&, bool, bool)>::__call_impl[abi:ne190107]<std::__function::__default_alloc_func<DB::registerDiskLocal(DB::DiskFactory&, bool)::$_0, std::shared_ptr<DB::IDisk> (String const&, Poco::Util::AbstractConfiguration const&, String const&, std::shared_ptr<DB::Context const>, std::map<String, std::shared_ptr<DB::IDisk>, std::less<String>, std::allocator<std::pair<String const, std::shared_ptr<DB::IDisk>>>> const&, bool, bool)>>(std::__function::__policy_storage const*, String const&, Poco::Util::AbstractConfiguration const&, String const&, std::shared_ptr<DB::Context const>&&, std::map<String, std::shared_ptr<DB::IDisk>, std::less<String>, std::allocator<std::pair<String const, std::shared_ptr<DB::IDisk>>>> const&, bool, bool) @ 0x0000000109beff30
+7. DB::DiskFactory::create(String const&, Poco::Util::AbstractConfiguration const&, String const&, std::shared_ptr<DB::Context const>, std::map<String, std::shared_ptr<DB::IDisk>, std::less<String>, std::allocator<std::pair<String const, std::shared_ptr<DB::IDisk>>>> const&, bool, bool, std::unordered_set<String, std::hash<String>, std::equal_to<String>, std::allocator<String>> const&) const @ 0x0000000109bdd584
+8. DB::DiskSelector::initialize(Poco::Util::AbstractConfiguration const&, String const&, std::shared_ptr<DB::Context const>, std::function<bool (Poco::Util::AbstractConfiguration const&, String const&, String const&)>) @ 0x0000000109bf2d9c
+9. DB::Context::getDiskSelector(std::lock_guard<std::mutex>&) const @ 0x000000010a1bc4fc
+10. DB::Context::getDisksMap(std::lock_guard<std::mutex>&) const @ 0x000000010a1bc8e0
+11. DB::Context::getDatabaseDisk() const @ 0x000000010a192c80
+12. DB::IDatabase::getDisk() const @ 0x0000000109bad0b8
+13. DB::DatabaseMemory::removeDataPath(std::shared_ptr<DB::Context const>) @ 0x0000000109b2741c
+14. DB::DatabaseMemory::DatabaseMemory(String const&, std::shared_ptr<DB::Context const>) @ 0x0000000109b2724c
+15. DB::DatabaseMemory* std::construct_at[abi:ne190107]<DB::DatabaseMemory, char const* const&, std::shared_ptr<DB::Context>, DB::DatabaseMemory*>(DB::DatabaseMemory*, char const* const&, std::shared_ptr<DB::Context>&&) @ 0x000000010a24afe4
+16. std::shared_ptr<DB::DatabaseMemory> std::allocate_shared[abi:ne190107]<DB::DatabaseMemory, std::allocator<DB::DatabaseMemory>, char const* const&, std::shared_ptr<DB::Context>, 0>(std::allocator<DB::DatabaseMemory> const&, char const* const&, std::shared_ptr<DB::Context>&&) @ 0x000000010a24ae58
+17. DB::DatabaseCatalog::initializeAndLoadTemporaryDatabase() @ 0x000000010a22a4b0
+18. DB::Server::main(std::vector<String, std::allocator<String>> const&) @ 0x0000000105e1aabc
+19. Poco::Util::Application::run() @ 0x000000011101df7c
+20. DB::Server::run() @ 0x0000000105e0cca0
+21. mainEntryClickHouseServer(int, char**) @ 0x0000000105e0a6c8
+22. main @ 0x000000010059c7dc
+23. start @ 0x00000001928e2b98
+ (version 25.10.1.293 (official build))
+2025.09.22 21:07:30.548020 [ 21624529 ] {} <Error> Application: Code: 137. DB::Exception: "default" disk path should be provided in <path> not it <storage_configuration>. (UNKNOWN_ELEMENT_IN_CONFIG), Stack trace (when copying this message, always include the lines below):
+
+0. Poco::Exception::Exception(String const&, int) @ 0x0000000110f259bc
+1. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000001059d30ac
+2. DB::Exception::Exception(String&&, int, String, bool) @ 0x00000001005a3498
+3. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x00000001005a30a8
+4. DB::Exception::Exception<>(int, FormatStringHelperImpl<>) @ 0x00000001005afb78
+5. DB::loadDiskLocalConfig(String const&, Poco::Util::AbstractConfiguration const&, String const&, std::shared_ptr<DB::Context const>, String&, unsigned long long&) @ 0x0000000109c0e84c
+6. std::shared_ptr<DB::IDisk> std::__function::__policy_invoker<std::shared_ptr<DB::IDisk> (String const&, Poco::Util::AbstractConfiguration const&, String const&, std::shared_ptr<DB::Context const>, std::map<String, std::shared_ptr<DB::IDisk>, std::less<String>, std::allocator<std::pair<String const, std::shared_ptr<DB::IDisk>>>> const&, bool, bool)>::__call_impl[abi:ne190107]<std::__function::__default_alloc_func<DB::registerDiskLocal(DB::DiskFactory&, bool)::$_0, std::shared_ptr<DB::IDisk> (String const&, Poco::Util::AbstractConfiguration const&, String const&, std::shared_ptr<DB::Context const>, std::map<String, std::shared_ptr<DB::IDisk>, std::less<String>, std::allocator<std::pair<String const, std::shared_ptr<DB::IDisk>>>> const&, bool, bool)>>(std::__function::__policy_storage const*, String const&, Poco::Util::AbstractConfiguration const&, String const&, std::shared_ptr<DB::Context const>&&, std::map<String, std::shared_ptr<DB::IDisk>, std::less<String>, std::allocator<std::pair<String const, std::shared_ptr<DB::IDisk>>>> const&, bool, bool) @ 0x0000000109beff30
+7. DB::DiskFactory::create(String const&, Poco::Util::AbstractConfiguration const&, String const&, std::shared_ptr<DB::Context const>, std::map<String, std::shared_ptr<DB::IDisk>, std::less<String>, std::allocator<std::pair<String const, std::shared_ptr<DB::IDisk>>>> const&, bool, bool, std::unordered_set<String, std::hash<String>, std::equal_to<String>, std::allocator<String>> const&) const @ 0x0000000109bdd584
+8. DB::DiskSelector::initialize(Poco::Util::AbstractConfiguration const&, String const&, std::shared_ptr<DB::Context const>, std::function<bool (Poco::Util::AbstractConfiguration const&, String const&, String const&)>) @ 0x0000000109bf2d9c
+9. DB::Context::getDiskSelector(std::lock_guard<std::mutex>&) const @ 0x000000010a1bc4fc
+10. DB::Context::getDisksMap(std::lock_guard<std::mutex>&) const @ 0x000000010a1bc8e0
+11. DB::Context::getDatabaseDisk() const @ 0x000000010a192c80
+12. DB::IDatabase::getDisk() const @ 0x0000000109bad0b8
+13. DB::DatabaseMemory::removeDataPath(std::shared_ptr<DB::Context const>) @ 0x0000000109b2741c
+14. DB::DatabaseMemory::DatabaseMemory(String const&, std::shared_ptr<DB::Context const>) @ 0x0000000109b2724c
+15. DB::DatabaseMemory* std::construct_at[abi:ne190107]<DB::DatabaseMemory, char const* const&, std::shared_ptr<DB::Context>, DB::DatabaseMemory*>(DB::DatabaseMemory*, char const* const&, std::shared_ptr<DB::Context>&&) @ 0x000000010a24afe4
+16. std::shared_ptr<DB::DatabaseMemory> std::allocate_shared[abi:ne190107]<DB::DatabaseMemory, std::allocator<DB::DatabaseMemory>, char const* const&, std::shared_ptr<DB::Context>, 0>(std::allocator<DB::DatabaseMemory> const&, char const* const&, std::shared_ptr<DB::Context>&&) @ 0x000000010a24ae58
+17. DB::DatabaseCatalog::initializeAndLoadTemporaryDatabase() @ 0x000000010a22a4b0
+18. DB::Server::main(std::vector<String, std::allocator<String>> const&) @ 0x0000000105e1aabc
+19. Poco::Util::Application::run() @ 0x000000011101df7c
+20. DB::Server::run() @ 0x0000000105e0cca0
+21. mainEntryClickHouseServer(int, char**) @ 0x0000000105e0a6c8
+22. main @ 0x000000010059c7dc
+23. start @ 0x00000001928e2b98
+ (version 25.10.1.293 (official build))
+2025.09.22 21:07:55.861970 [ 21625669 ] {} <Warning> Context: Maximum number of threads is lower than 30000. There could be problems with handling a lot of simultaneous queries.
+2025.09.22 21:19:57.612769 [ 21625675 ] {e2f59f94-c1de-47ba-9791-d86d59a3dcc3} <Error> executeQuery: Code: 57. DB::Exception: Table video_episodes.videos already exists. (TABLE_ALREADY_EXISTS) (version 25.10.1.293 (official build)) (from 127.0.0.1:59236) (query 3, line 8) (in query: -- Videos table - stores video file information
+ CREATE TABLE videos ( id String, filename String, file_path String, file_size UInt64, duration_seconds Float32, chunk_length_seconds UInt32, total_chunks UInt32, processing_status LowCardinality(String) DEFAULT 'pending', -- pending, processing, completed, failed
+ -- Timestamps
+ created_at DateTime DEFAULT now(), updated_at DateTime DEFAULT now(), processing_started_at Nullable(DateTime), processing_completed_at Nullable(DateTime), -- Video metadata (configurable JSON)
+ metadata String DEFAULT '{}', -- JSON string for flexible metadata
+ -- File hash for deduplication
+ file_hash String DEFAULT '', -- Processing statistics
+ total_episodes UInt32 DEFAULT 0, successful_episodes UInt32 DEFAULT 0, failed_episodes UInt32 DEFAULT 0 ) ENGINE = MergeTree() ORDER BY (id, created_at) SETTINGS index_granularity = 8192;), Stack trace (when copying this message, always include the lines below):
+
+0. Poco::Exception::Exception(String const&, int) @ 0x0000000112db59bc
+1. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000001078630ac
+2. DB::Exception::Exception(String&&, int, String, bool) @ 0x0000000102433498
+3. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x00000001024330a8
+4. DB::Exception::Exception<String, String>(int, FormatStringHelperImpl<std::type_identity<String>::type, std::type_identity<String>::type>, String&&, String&&) @ 0x0000000102432840
+5. DB::InterpreterCreateQuery::doCreateTable(DB::ASTCreateQuery&, DB::InterpreterCreateQuery::TableProperties const&, std::unique_ptr<DB::DDLGuard, std::default_delete<DB::DDLGuard>>&, DB::LoadingStrictnessLevel) @ 0x000000010c1bbe9c
+6. DB::InterpreterCreateQuery::createTable(DB::ASTCreateQuery&) @ 0x000000010c1b54c0
+7. DB::InterpreterCreateQuery::execute() @ 0x000000010c1c0534
+8. DB::executeQueryImpl(char const*, char const*, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum, std::unique_ptr<DB::ReadBuffer, std::default_delete<DB::ReadBuffer>>&, std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::ImplicitTransactionControlExecutor>) @ 0x000000010c58c9e8
+9. DB::executeQuery(String const&, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum) @ 0x000000010c588bbc
+10. DB::TCPHandler::runImpl() @ 0x000000010f4a0e64
+11. DB::TCPHandler::run() @ 0x000000010f4ba3a4
+12. Poco::Net::TCPServerConnection::start() @ 0x0000000112e84b98
+13. Poco::Net::TCPServerDispatcher::run() @ 0x0000000112e85278
+14. Poco::PooledThread::run() @ 0x0000000112e255c8
+15. Poco::ThreadImpl::runnableEntry(void*) @ 0x0000000112e22728
+16. _pthread_start @ 0x0000000192c83c0c
+17. thread_start @ 0x0000000192c7eb80
+
+2025.09.22 21:19:57.613355 [ 21625675 ] {} <Error> TCPHandler: Code: 57. DB::Exception: Table video_episodes.videos already exists. (TABLE_ALREADY_EXISTS), Stack trace (when copying this message, always include the lines below):
+
+0. Poco::Exception::Exception(String const&, int) @ 0x0000000112db59bc
+1. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000001078630ac
+2. DB::Exception::Exception(String&&, int, String, bool) @ 0x0000000102433498
+3. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x00000001024330a8
+4. DB::Exception::Exception<String, String>(int, FormatStringHelperImpl<std::type_identity<String>::type, std::type_identity<String>::type>, String&&, String&&) @ 0x0000000102432840
+5. DB::InterpreterCreateQuery::doCreateTable(DB::ASTCreateQuery&, DB::InterpreterCreateQuery::TableProperties const&, std::unique_ptr<DB::DDLGuard, std::default_delete<DB::DDLGuard>>&, DB::LoadingStrictnessLevel) @ 0x000000010c1bbe9c
+6. DB::InterpreterCreateQuery::createTable(DB::ASTCreateQuery&) @ 0x000000010c1b54c0
+7. DB::InterpreterCreateQuery::execute() @ 0x000000010c1c0534
+8. DB::executeQueryImpl(char const*, char const*, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum, std::unique_ptr<DB::ReadBuffer, std::default_delete<DB::ReadBuffer>>&, std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::ImplicitTransactionControlExecutor>) @ 0x000000010c58c9e8
+9. DB::executeQuery(String const&, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum) @ 0x000000010c588bbc
+10. DB::TCPHandler::runImpl() @ 0x000000010f4a0e64
+11. DB::TCPHandler::run() @ 0x000000010f4ba3a4
+12. Poco::Net::TCPServerConnection::start() @ 0x0000000112e84b98
+13. Poco::Net::TCPServerDispatcher::run() @ 0x0000000112e85278
+14. Poco::PooledThread::run() @ 0x0000000112e255c8
+15. Poco::ThreadImpl::runnableEntry(void*) @ 0x0000000112e22728
+16. _pthread_start @ 0x0000000192c83c0c
+17. thread_start @ 0x0000000192c7eb80
+
+2025.09.22 23:21:32.594736 [ 21625675 ] {90c1d3e4-bd15-458f-b311-c2a3db597c2d} <Error> executeQuery: Code: 60. DB::Exception: Unknown table expression identifier 'videos' in scope SELECT id, filename, processing_status, total_episodes, successful_episodes FROM videos ORDER BY created_at DESC. (UNKNOWN_TABLE) (version 25.10.1.293 (official build)) (from 127.0.0.1:64270) (query 1, line 1) (in query: SELECT id, filename, processing_status, total_episodes, successful_episodes FROM videos ORDER BY created_at DESC), Stack trace (when copying this message, always include the lines below):
+
+0. Poco::Exception::Exception(String const&, int) @ 0x0000000112db59bc
+1. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000001078630ac
+2. DB::Exception::Exception(String&&, int, String, bool) @ 0x0000000102433498
+3. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x00000001024330a8
+4. DB::Exception::Exception<String const&, String>(int, FormatStringHelperImpl<std::type_identity<String const&>::type, std::type_identity<String>::type>, String const&, String&&) @ 0x0000000102e80580
+5. DB::QueryAnalyzer::initializeQueryJoinTreeNode(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&) @ 0x000000010bb8691c
+6. DB::QueryAnalyzer::resolveQuery(std::shared_ptr<DB::IQueryTreeNode> const&, DB::IdentifierResolveScope&) @ 0x000000010bb690e4
+7. DB::QueryAnalyzer::resolve(std::shared_ptr<DB::IQueryTreeNode>&, std::shared_ptr<DB::IQueryTreeNode> const&, std::shared_ptr<DB::Context const>) @ 0x000000010bb684b0
+8. DB::QueryAnalysisPass::run(std::shared_ptr<DB::IQueryTreeNode>&, std::shared_ptr<DB::Context const>) @ 0x000000010bb67aa0
+9. DB::QueryTreePassManager::run(std::shared_ptr<DB::IQueryTreeNode>) @ 0x000000010bad607c
+10. DB::buildQueryTreeAndRunPasses(std::shared_ptr<DB::IAST> const&, DB::SelectQueryOptions const&, std::shared_ptr<DB::Context const> const&, std::shared_ptr<DB::IStorage> const&) @ 0x000000010c23455c
+11. DB::InterpreterSelectQueryAnalyzer::InterpreterSelectQueryAnalyzer(std::shared_ptr<DB::IAST> const&, std::shared_ptr<DB::Context const> const&, DB::SelectQueryOptions const&, std::vector<String, std::allocator<String>> const&) @ 0x000000010c232d60
+12. std::unique_ptr<DB::IInterpreter, std::default_delete<DB::IInterpreter>> std::__function::__policy_invoker<std::unique_ptr<DB::IInterpreter, std::default_delete<DB::IInterpreter>> (DB::InterpreterFactory::Arguments const&)>::__call_impl[abi:ne190107]<std::__function::__default_alloc_func<DB::registerInterpreterSelectQueryAnalyzer(DB::InterpreterFactory&)::$_0, std::unique_ptr<DB::IInterpreter, std::default_delete<DB::IInterpreter>> (DB::InterpreterFactory::Arguments const&)>>(std::__function::__policy_storage const*, DB::InterpreterFactory::Arguments const&) @ 0x000000010c235fa4
+13. DB::InterpreterFactory::get(std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::Context>, DB::SelectQueryOptions const&) @ 0x000000010c1eb11c
+14. DB::executeQueryImpl(char const*, char const*, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum, std::unique_ptr<DB::ReadBuffer, std::default_delete<DB::ReadBuffer>>&, std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::ImplicitTransactionControlExecutor>) @ 0x000000010c58c234
+15. DB::executeQuery(String const&, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum) @ 0x000000010c588bbc
+16. DB::TCPHandler::runImpl() @ 0x000000010f4a0e64
+17. DB::TCPHandler::run() @ 0x000000010f4ba3a4
+18. Poco::Net::TCPServerConnection::start() @ 0x0000000112e84b98
+19. Poco::Net::TCPServerDispatcher::run() @ 0x0000000112e85278
+20. Poco::PooledThread::run() @ 0x0000000112e255c8
+21. Poco::ThreadImpl::runnableEntry(void*) @ 0x0000000112e22728
+22. _pthread_start @ 0x0000000192c83c0c
+23. thread_start @ 0x0000000192c7eb80
+
+2025.09.22 23:21:32.595041 [ 21625675 ] {} <Error> TCPHandler: Code: 60. DB::Exception: Unknown table expression identifier 'videos' in scope SELECT id, filename, processing_status, total_episodes, successful_episodes FROM videos ORDER BY created_at DESC. (UNKNOWN_TABLE), Stack trace (when copying this message, always include the lines below):
+
+0. Poco::Exception::Exception(String const&, int) @ 0x0000000112db59bc
+1. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000001078630ac
+2. DB::Exception::Exception(String&&, int, String, bool) @ 0x0000000102433498
+3. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x00000001024330a8
+4. DB::Exception::Exception<String const&, String>(int, FormatStringHelperImpl<std::type_identity<String const&>::type, std::type_identity<String>::type>, String const&, String&&) @ 0x0000000102e80580
+5. DB::QueryAnalyzer::initializeQueryJoinTreeNode(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&) @ 0x000000010bb8691c
+6. DB::QueryAnalyzer::resolveQuery(std::shared_ptr<DB::IQueryTreeNode> const&, DB::IdentifierResolveScope&) @ 0x000000010bb690e4
+7. DB::QueryAnalyzer::resolve(std::shared_ptr<DB::IQueryTreeNode>&, std::shared_ptr<DB::IQueryTreeNode> const&, std::shared_ptr<DB::Context const>) @ 0x000000010bb684b0
+8. DB::QueryAnalysisPass::run(std::shared_ptr<DB::IQueryTreeNode>&, std::shared_ptr<DB::Context const>) @ 0x000000010bb67aa0
+9. DB::QueryTreePassManager::run(std::shared_ptr<DB::IQueryTreeNode>) @ 0x000000010bad607c
+10. DB::buildQueryTreeAndRunPasses(std::shared_ptr<DB::IAST> const&, DB::SelectQueryOptions const&, std::shared_ptr<DB::Context const> const&, std::shared_ptr<DB::IStorage> const&) @ 0x000000010c23455c
+11. DB::InterpreterSelectQueryAnalyzer::InterpreterSelectQueryAnalyzer(std::shared_ptr<DB::IAST> const&, std::shared_ptr<DB::Context const> const&, DB::SelectQueryOptions const&, std::vector<String, std::allocator<String>> const&) @ 0x000000010c232d60
+12. std::unique_ptr<DB::IInterpreter, std::default_delete<DB::IInterpreter>> std::__function::__policy_invoker<std::unique_ptr<DB::IInterpreter, std::default_delete<DB::IInterpreter>> (DB::InterpreterFactory::Arguments const&)>::__call_impl[abi:ne190107]<std::__function::__default_alloc_func<DB::registerInterpreterSelectQueryAnalyzer(DB::InterpreterFactory&)::$_0, std::unique_ptr<DB::IInterpreter, std::default_delete<DB::IInterpreter>> (DB::InterpreterFactory::Arguments const&)>>(std::__function::__policy_storage const*, DB::InterpreterFactory::Arguments const&) @ 0x000000010c235fa4
+13. DB::InterpreterFactory::get(std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::Context>, DB::SelectQueryOptions const&) @ 0x000000010c1eb11c
+14. DB::executeQueryImpl(char const*, char const*, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum, std::unique_ptr<DB::ReadBuffer, std::default_delete<DB::ReadBuffer>>&, std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::ImplicitTransactionControlExecutor>) @ 0x000000010c58c234
+15. DB::executeQuery(String const&, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum) @ 0x000000010c588bbc
+16. DB::TCPHandler::runImpl() @ 0x000000010f4a0e64
+17. DB::TCPHandler::run() @ 0x000000010f4ba3a4
+18. Poco::Net::TCPServerConnection::start() @ 0x0000000112e84b98
+19. Poco::Net::TCPServerDispatcher::run() @ 0x0000000112e85278
+20. Poco::PooledThread::run() @ 0x0000000112e255c8
+21. Poco::ThreadImpl::runnableEntry(void*) @ 0x0000000112e22728
+22. _pthread_start @ 0x0000000192c83c0c
+23. thread_start @ 0x0000000192c7eb80
+
+2025.09.22 23:24:07.645391 [ 21625675 ] {3aa47013-4ced-4b18-9d7c-1cbf0c4bad9b} <Error> executeQuery: Code: 48. DB::Exception: Lightweight updates are not supported. Lightweight updates are supported only for tables with materialized _block_number column. Run 'MODIFY SETTING enable_block_number_column = 1' command to enable it. (NOT_IMPLEMENTED) (version 25.10.1.293 (official build)) (from 127.0.0.1:64454) (query 2, line 1) (in query: UPDATE videos SET processing_status = 'completed', total_episodes = 2, successful_episodes = 2, processing_completed_at = now() WHERE id = 'ddf4492e-bc8f-43d6-b99d-ce6a8ffe1097'), Stack trace (when copying this message, always include the lines below):
+
+0. Poco::Exception::Exception(String const&, int) @ 0x0000000112db59bc
+1. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000001078630ac
+2. DB::Exception::Exception(String&&, int, String, bool) @ 0x0000000102433498
+3. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x00000001024330a8
+4. DB::Exception::Exception<String&>(int, FormatStringHelperImpl<std::type_identity<String&>::type>, String&) @ 0x000000010244af3c
+5. DB::InterpreterUpdateQuery::execute() @ 0x000000010c261328
+6. DB::executeQueryImpl(char const*, char const*, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum, std::unique_ptr<DB::ReadBuffer, std::default_delete<DB::ReadBuffer>>&, std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::ImplicitTransactionControlExecutor>) @ 0x000000010c58c9e8
+7. DB::executeQuery(String const&, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum) @ 0x000000010c588bbc
+8. DB::TCPHandler::runImpl() @ 0x000000010f4a0e64
+9. DB::TCPHandler::run() @ 0x000000010f4ba3a4
+10. Poco::Net::TCPServerConnection::start() @ 0x0000000112e84b98
+11. Poco::Net::TCPServerDispatcher::run() @ 0x0000000112e85278
+12. Poco::PooledThread::run() @ 0x0000000112e255c8
+13. Poco::ThreadImpl::runnableEntry(void*) @ 0x0000000112e22728
+14. _pthread_start @ 0x0000000192c83c0c
+15. thread_start @ 0x0000000192c7eb80
+
+2025.09.22 23:24:07.645526 [ 21625675 ] {} <Error> TCPHandler: Code: 48. DB::Exception: Lightweight updates are not supported. Lightweight updates are supported only for tables with materialized _block_number column. Run 'MODIFY SETTING enable_block_number_column = 1' command to enable it. (NOT_IMPLEMENTED), Stack trace (when copying this message, always include the lines below):
+
+0. Poco::Exception::Exception(String const&, int) @ 0x0000000112db59bc
+1. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000001078630ac
+2. DB::Exception::Exception(String&&, int, String, bool) @ 0x0000000102433498
+3. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x00000001024330a8
+4. DB::Exception::Exception<String&>(int, FormatStringHelperImpl<std::type_identity<String&>::type>, String&) @ 0x000000010244af3c
+5. DB::InterpreterUpdateQuery::execute() @ 0x000000010c261328
+6. DB::executeQueryImpl(char const*, char const*, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum, std::unique_ptr<DB::ReadBuffer, std::default_delete<DB::ReadBuffer>>&, std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::ImplicitTransactionControlExecutor>) @ 0x000000010c58c9e8
+7. DB::executeQuery(String const&, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum) @ 0x000000010c588bbc
+8. DB::TCPHandler::runImpl() @ 0x000000010f4a0e64
+9. DB::TCPHandler::run() @ 0x000000010f4ba3a4
+10. Poco::Net::TCPServerConnection::start() @ 0x0000000112e84b98
+11. Poco::Net::TCPServerDispatcher::run() @ 0x0000000112e85278
+12. Poco::PooledThread::run() @ 0x0000000112e255c8
+13. Poco::ThreadImpl::runnableEntry(void*) @ 0x0000000112e22728
+14. _pthread_start @ 0x0000000192c83c0c
+15. thread_start @ 0x0000000192c7eb80
+
+2025.09.22 23:35:31.477023 [ 21625677 ] {4ac9bdaa-a5aa-4617-8351-d8277fe13dc6} <Error> executeQuery: Code: 46. DB::Exception: Function with name `JSON_EXTRACT_STRING` does not exist. In scope SELECT count() AS total_episodes, sumIf(1, JSON_EXTRACT_STRING(metadata, '$.annotation.status') = 'success') AS successful_episodes, sumIf(1, JSON_EXTRACT_STRING(metadata, '$.annotation.status') = 'failure') AS failed_episodes, sumIf(1, JSON_EXTRACT_STRING(metadata, '$.annotation.status') = 'not_classified') AS not_classified_episodes FROM episodes. Maybe you meant: ['JSONExtractString','JSONExtractUInt']. (UNKNOWN_FUNCTION) (version 25.10.1.293 (official build)) (from 127.0.0.1:49400) (in query:  SELECT count() as total_episodes, sumIf(1, JSON_EXTRACT_STRING(metadata, '$.annotation.status') = 'success') as successful_episodes, sumIf(1, JSON_EXTRACT_STRING(metadata, '$.annotation.status') = 'failure') as failed_episodes, sumIf(1, JSON_EXTRACT_STRING(metadata, '$.annotation.status') = 'not_classified') as not_classified_episodes FROM episodes FORMAT Native), Stack trace (when copying this message, always include the lines below):
+
+0. Poco::Exception::Exception(String const&, int) @ 0x0000000112db59bc
+1. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000001078630ac
+2. DB::Exception::Exception(String&&, int, String, bool) @ 0x0000000102433498
+3. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x00000001024330a8
+4. DB::Exception::Exception<String, String, String>(int, FormatStringHelperImpl<std::type_identity<String>::type, std::type_identity<String>::type, std::type_identity<String>::type>, String&&, String&&, String&&) @ 0x00000001024e4dc4
+5. DB::QueryAnalyzer::resolveFunction(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&) @ 0x000000010bbacb18
+6. DB::QueryAnalyzer::resolveExpressionNode(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&, bool, bool, bool) @ 0x000000010bb6dde0
+7. DB::QueryAnalyzer::resolveExpressionNodeList(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&, bool, bool) @ 0x000000010bb6d4ec
+8. DB::QueryAnalyzer::resolveFunction(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&) @ 0x000000010bba79a8
+9. DB::QueryAnalyzer::resolveExpressionNode(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&, bool, bool, bool) @ 0x000000010bb6dde0
+10. DB::QueryAnalyzer::resolveExpressionNodeList(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&, bool, bool) @ 0x000000010bb6d4ec
+11. DB::QueryAnalyzer::resolveFunction(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&) @ 0x000000010bba79a8
+12. DB::QueryAnalyzer::resolveExpressionNode(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&, bool, bool, bool) @ 0x000000010bb6dde0
+13. DB::QueryAnalyzer::resolveExpressionNodeList(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&, bool, bool) @ 0x000000010bb6d4ec
+14. DB::QueryAnalyzer::resolveProjectionExpressionNodeList(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&) @ 0x000000010bb85774
+15. DB::QueryAnalyzer::resolveQuery(std::shared_ptr<DB::IQueryTreeNode> const&, DB::IdentifierResolveScope&) @ 0x000000010bb691ac
+16. DB::QueryAnalyzer::resolve(std::shared_ptr<DB::IQueryTreeNode>&, std::shared_ptr<DB::IQueryTreeNode> const&, std::shared_ptr<DB::Context const>) @ 0x000000010bb684b0
+17. DB::QueryAnalysisPass::run(std::shared_ptr<DB::IQueryTreeNode>&, std::shared_ptr<DB::Context const>) @ 0x000000010bb67aa0
+18. DB::QueryTreePassManager::run(std::shared_ptr<DB::IQueryTreeNode>) @ 0x000000010bad607c
+19. DB::buildQueryTreeAndRunPasses(std::shared_ptr<DB::IAST> const&, DB::SelectQueryOptions const&, std::shared_ptr<DB::Context const> const&, std::shared_ptr<DB::IStorage> const&) @ 0x000000010c23455c
+20. DB::InterpreterSelectQueryAnalyzer::InterpreterSelectQueryAnalyzer(std::shared_ptr<DB::IAST> const&, std::shared_ptr<DB::Context const> const&, DB::SelectQueryOptions const&, std::vector<String, std::allocator<String>> const&) @ 0x000000010c232d60
+21. std::unique_ptr<DB::IInterpreter, std::default_delete<DB::IInterpreter>> std::__function::__policy_invoker<std::unique_ptr<DB::IInterpreter, std::default_delete<DB::IInterpreter>> (DB::InterpreterFactory::Arguments const&)>::__call_impl[abi:ne190107]<std::__function::__default_alloc_func<DB::registerInterpreterSelectQueryAnalyzer(DB::InterpreterFactory&)::$_0, std::unique_ptr<DB::IInterpreter, std::default_delete<DB::IInterpreter>> (DB::InterpreterFactory::Arguments const&)>>(std::__function::__policy_storage const*, DB::InterpreterFactory::Arguments const&) @ 0x000000010c235fa4
+22. DB::InterpreterFactory::get(std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::Context>, DB::SelectQueryOptions const&) @ 0x000000010c1eb11c
+23. DB::executeQueryImpl(char const*, char const*, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum, std::unique_ptr<DB::ReadBuffer, std::default_delete<DB::ReadBuffer>>&, std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::ImplicitTransactionControlExecutor>) @ 0x000000010c58c234
+24. DB::executeQuery(std::unique_ptr<DB::ReadBuffer, std::default_delete<DB::ReadBuffer>>, DB::WriteBuffer&, bool, std::shared_ptr<DB::Context>, std::function<void (DB::QueryResultDetails const&)>, DB::QueryFlags, std::optional<DB::FormatSettings> const&, std::function<void (DB::IOutputFormat&, String const&, std::shared_ptr<DB::Context const> const&, std::optional<DB::FormatSettings> const&)>, std::function<void ()>) @ 0x000000010c590820
+25. DB::HTTPHandler::processQuery(DB::HTTPServerRequest&, DB::HTMLForm&, DB::HTTPServerResponse&, DB::HTTPHandler::Output&, std::optional<DB::CurrentThread::QueryScope>&, StrongTypedef<unsigned long, ProfileEvents::EventTag> const&) @ 0x000000010f421644
+26. DB::HTTPHandler::handleRequest(DB::HTTPServerRequest&, DB::HTTPServerResponse&, StrongTypedef<unsigned long, ProfileEvents::EventTag> const&) @ 0x000000010f424ccc
+27. DB::HTTPServerConnection::run() @ 0x000000010f4c93ac
+28. Poco::Net::TCPServerConnection::start() @ 0x0000000112e84b98
+29. Poco::Net::TCPServerDispatcher::run() @ 0x0000000112e85278
+30. Poco::PooledThread::run() @ 0x0000000112e255c8
+31. Poco::ThreadImpl::runnableEntry(void*) @ 0x0000000112e22728
+
+2025.09.22 23:35:31.477763 [ 21625677 ] {4ac9bdaa-a5aa-4617-8351-d8277fe13dc6} <Error> DynamicQueryHandler: Code: 46. DB::Exception: Function with name `JSON_EXTRACT_STRING` does not exist. In scope SELECT count() AS total_episodes, sumIf(1, JSON_EXTRACT_STRING(metadata, '$.annotation.status') = 'success') AS successful_episodes, sumIf(1, JSON_EXTRACT_STRING(metadata, '$.annotation.status') = 'failure') AS failed_episodes, sumIf(1, JSON_EXTRACT_STRING(metadata, '$.annotation.status') = 'not_classified') AS not_classified_episodes FROM episodes. Maybe you meant: ['JSONExtractString','JSONExtractUInt']. (UNKNOWN_FUNCTION), Stack trace (when copying this message, always include the lines below):
+
+0. Poco::Exception::Exception(String const&, int) @ 0x0000000112db59bc
+1. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000001078630ac
+2. DB::Exception::Exception(String&&, int, String, bool) @ 0x0000000102433498
+3. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x00000001024330a8
+4. DB::Exception::Exception<String, String, String>(int, FormatStringHelperImpl<std::type_identity<String>::type, std::type_identity<String>::type, std::type_identity<String>::type>, String&&, String&&, String&&) @ 0x00000001024e4dc4
+5. DB::QueryAnalyzer::resolveFunction(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&) @ 0x000000010bbacb18
+6. DB::QueryAnalyzer::resolveExpressionNode(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&, bool, bool, bool) @ 0x000000010bb6dde0
+7. DB::QueryAnalyzer::resolveExpressionNodeList(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&, bool, bool) @ 0x000000010bb6d4ec
+8. DB::QueryAnalyzer::resolveFunction(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&) @ 0x000000010bba79a8
+9. DB::QueryAnalyzer::resolveExpressionNode(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&, bool, bool, bool) @ 0x000000010bb6dde0
+10. DB::QueryAnalyzer::resolveExpressionNodeList(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&, bool, bool) @ 0x000000010bb6d4ec
+11. DB::QueryAnalyzer::resolveFunction(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&) @ 0x000000010bba79a8
+12. DB::QueryAnalyzer::resolveExpressionNode(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&, bool, bool, bool) @ 0x000000010bb6dde0
+13. DB::QueryAnalyzer::resolveExpressionNodeList(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&, bool, bool) @ 0x000000010bb6d4ec
+14. DB::QueryAnalyzer::resolveProjectionExpressionNodeList(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&) @ 0x000000010bb85774
+15. DB::QueryAnalyzer::resolveQuery(std::shared_ptr<DB::IQueryTreeNode> const&, DB::IdentifierResolveScope&) @ 0x000000010bb691ac
+16. DB::QueryAnalyzer::resolve(std::shared_ptr<DB::IQueryTreeNode>&, std::shared_ptr<DB::IQueryTreeNode> const&, std::shared_ptr<DB::Context const>) @ 0x000000010bb684b0
+17. DB::QueryAnalysisPass::run(std::shared_ptr<DB::IQueryTreeNode>&, std::shared_ptr<DB::Context const>) @ 0x000000010bb67aa0
+18. DB::QueryTreePassManager::run(std::shared_ptr<DB::IQueryTreeNode>) @ 0x000000010bad607c
+19. DB::buildQueryTreeAndRunPasses(std::shared_ptr<DB::IAST> const&, DB::SelectQueryOptions const&, std::shared_ptr<DB::Context const> const&, std::shared_ptr<DB::IStorage> const&) @ 0x000000010c23455c
+20. DB::InterpreterSelectQueryAnalyzer::InterpreterSelectQueryAnalyzer(std::shared_ptr<DB::IAST> const&, std::shared_ptr<DB::Context const> const&, DB::SelectQueryOptions const&, std::vector<String, std::allocator<String>> const&) @ 0x000000010c232d60
+21. std::unique_ptr<DB::IInterpreter, std::default_delete<DB::IInterpreter>> std::__function::__policy_invoker<std::unique_ptr<DB::IInterpreter, std::default_delete<DB::IInterpreter>> (DB::InterpreterFactory::Arguments const&)>::__call_impl[abi:ne190107]<std::__function::__default_alloc_func<DB::registerInterpreterSelectQueryAnalyzer(DB::InterpreterFactory&)::$_0, std::unique_ptr<DB::IInterpreter, std::default_delete<DB::IInterpreter>> (DB::InterpreterFactory::Arguments const&)>>(std::__function::__policy_storage const*, DB::InterpreterFactory::Arguments const&) @ 0x000000010c235fa4
+22. DB::InterpreterFactory::get(std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::Context>, DB::SelectQueryOptions const&) @ 0x000000010c1eb11c
+23. DB::executeQueryImpl(char const*, char const*, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum, std::unique_ptr<DB::ReadBuffer, std::default_delete<DB::ReadBuffer>>&, std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::ImplicitTransactionControlExecutor>) @ 0x000000010c58c234
+24. DB::executeQuery(std::unique_ptr<DB::ReadBuffer, std::default_delete<DB::ReadBuffer>>, DB::WriteBuffer&, bool, std::shared_ptr<DB::Context>, std::function<void (DB::QueryResultDetails const&)>, DB::QueryFlags, std::optional<DB::FormatSettings> const&, std::function<void (DB::IOutputFormat&, String const&, std::shared_ptr<DB::Context const> const&, std::optional<DB::FormatSettings> const&)>, std::function<void ()>) @ 0x000000010c590820
+25. DB::HTTPHandler::processQuery(DB::HTTPServerRequest&, DB::HTMLForm&, DB::HTTPServerResponse&, DB::HTTPHandler::Output&, std::optional<DB::CurrentThread::QueryScope>&, StrongTypedef<unsigned long, ProfileEvents::EventTag> const&) @ 0x000000010f421644
+26. DB::HTTPHandler::handleRequest(DB::HTTPServerRequest&, DB::HTTPServerResponse&, StrongTypedef<unsigned long, ProfileEvents::EventTag> const&) @ 0x000000010f424ccc
+27. DB::HTTPServerConnection::run() @ 0x000000010f4c93ac
+28. Poco::Net::TCPServerConnection::start() @ 0x0000000112e84b98
+29. Poco::Net::TCPServerDispatcher::run() @ 0x0000000112e85278
+30. Poco::PooledThread::run() @ 0x0000000112e255c8
+31. Poco::ThreadImpl::runnableEntry(void*) @ 0x0000000112e22728
+ (version 25.10.1.293 (official build))

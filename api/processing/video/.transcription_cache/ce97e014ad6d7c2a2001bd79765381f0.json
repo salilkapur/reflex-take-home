@@ -1,0 +1,20 @@
+{
+  "text": "Start. Finish. Start.",
+  "words": [
+    {
+      "word": "Start",
+      "start": 1.0,
+      "end": 2.200000047683716
+    },
+    {
+      "word": "Finish",
+      "start": 10.0,
+      "end": 10.779999732971191
+    },
+    {
+      "word": "Start",
+      "start": 12.199999809265137,
+      "end": 12.420000076293945
+    }
+  ]
+}

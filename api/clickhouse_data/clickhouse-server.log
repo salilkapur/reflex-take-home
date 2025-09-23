@@ -1,0 +1,458 @@
+2025.09.22 21:07:30.439503 [ 21624526 ] {} <Information> Application: Will watch for the process with pid 35724
+2025.09.22 21:07:30.439715 [ 21624529 ] {} <Information> Application: Forked a child process to watch
+2025.09.22 21:07:30.439905 [ 21624529 ] {} <Information> Application: Starting ClickHouse 25.10.1.293 (revision: 54503, git hash: 743b8d581e7c1ec5acdc65f610367b70e0f7c7ac, build id: <unknown>), PID 35724
+2025.09.22 21:07:30.440781 [ 21624529 ] {} <Information> Application: starting up
+2025.09.22 21:07:30.441005 [ 21624529 ] {} <Information> Application: OS name: Darwin, version: 24.6.0, architecture: arm64
+2025.09.22 21:07:30.479795 [ 21624529 ] {} <Information> Application: Available RAM: 16.00 GiB; logical cores: 8; used cores: 8.
+2025.09.22 21:07:30.479799 [ 21624529 ] {} <Information> Application: Query Profiler and TraceCollector are disabled because they require PHDR cache to be created (otherwise the function 'dl_iterate_phdr' is not lock free and not async-signal safe).
+2025.09.22 21:07:30.480570 [ 21624529 ] {} <Information> StatusFile: Writing pid 35724 to ./clickhouse_data/status
+2025.09.22 21:07:30.483706 [ 21624529 ] {} <Information> MemoryWorker: Starting background memory thread with period of 100ms, using Jemalloc as source
+2025.09.22 21:07:30.483779 [ 21624529 ] {} <Information> BackgroundSchedulePool/BgSchPool: Create BackgroundSchedulePool with 512 threads
+2025.09.22 21:07:30.496440 [ 21624529 ] {} <Warning> Context: Maximum number of threads is lower than 30000. There could be problems with handling a lot of simultaneous queries.
+2025.09.22 21:07:30.498277 [ 21624529 ] {} <Warning> ConfigProcessor: Include not found: networks
+2025.09.22 21:07:30.499107 [ 21624529 ] {} <Information> Application: Changed setting 'max_server_memory_usage' to 14.40 GiB (16.00 GiB available memory * 0.90 max_server_memory_usage_to_ram_ratio)
+2025.09.22 21:07:30.499119 [ 21624529 ] {} <Information> Application: Setting merges_mutations_memory_usage_soft_limit was set to 8.00 GiB (16.00 GiB available * 0.50 merges_mutations_memory_usage_to_ram_ratio)
+2025.09.22 21:07:30.499121 [ 21624529 ] {} <Information> Application: Merges and mutations memory limit is set to 8.00 GiB
+2025.09.22 21:07:30.499693 [ 21624529 ] {} <Information> Application: Setting max_remote_read_network_bandwidth_for_server was set to 0
+2025.09.22 21:07:30.499694 [ 21624529 ] {} <Information> Application: Setting max_remote_write_network_bandwidth_for_server was set to 0
+2025.09.22 21:07:30.499695 [ 21624529 ] {} <Information> Application: Setting max_local_read_bandwidth_for_server was set to 0
+2025.09.22 21:07:30.499696 [ 21624529 ] {} <Information> Application: Setting max_local_write_bandwidth_for_server was set to 0
+2025.09.22 21:07:30.499721 [ 21624529 ] {} <Information> Application: ConcurrencyControl limit is set to UNLIMITED CPU slots with 'fair_round_robin' scheduler
+2025.09.22 21:07:30.499733 [ 21624529 ] {} <Information> BackgroundSchedulePool/BgBufSchPool: Create BackgroundSchedulePool with 16 threads
+2025.09.22 21:07:30.500058 [ 21624529 ] {} <Information> BackgroundSchedulePool/BgMBSchPool: Create BackgroundSchedulePool with 16 threads
+2025.09.22 21:07:30.500393 [ 21624529 ] {} <Information> BackgroundSchedulePool/BgDistSchPool: Create BackgroundSchedulePool with 16 threads
+2025.09.22 21:07:30.501146 [ 21624529 ] {} <Information> CertificateReloader: One of paths is empty. Cannot apply new configuration for certificates. Fill all paths and try again.
+2025.09.22 21:07:30.501148 [ 21624529 ] {} <Information> CertificateReloader: One of paths is empty. Cannot apply new configuration for certificates. Fill all paths and try again.
+2025.09.22 21:07:30.501885 [ 21624529 ] {} <Warning> ConfigProcessor: Include not found: networks
+2025.09.22 21:07:30.505061 [ 21624529 ] {} <Information> Context: Initialized background executor for merges and mutations with num_threads=16, num_tasks=32, scheduling_policy=round_robin
+2025.09.22 21:07:30.505298 [ 21624529 ] {} <Information> Context: Initialized background executor for move operations with num_threads=8, num_tasks=8
+2025.09.22 21:07:30.505611 [ 21624529 ] {} <Information> Context: Initialized background executor for fetches with num_threads=16, num_tasks=16
+2025.09.22 21:07:30.505743 [ 21624529 ] {} <Information> Context: Initialized background executor for common operations (e.g. clearing old parts) with num_threads=8, num_tasks=8
+2025.09.22 21:07:30.506315 [ 21624529 ] {} <Information> DNSCacheUpdater: Update period 15 seconds
+2025.09.22 21:07:30.506322 [ 21624529 ] {} <Information> Application: Loading metadata from ./clickhouse_data/
+2025.09.22 21:07:30.526085 [ 21624529 ] {} <Error> Application: Caught exception while loading metadata: Code: 137. DB::Exception: "default" disk path should be provided in <path> not it <storage_configuration>. (UNKNOWN_ELEMENT_IN_CONFIG), Stack trace (when copying this message, always include the lines below):
+
+0. Poco::Exception::Exception(String const&, int) @ 0x0000000110f259bc
+1. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000001059d30ac
+2. DB::Exception::Exception(String&&, int, String, bool) @ 0x00000001005a3498
+3. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x00000001005a30a8
+4. DB::Exception::Exception<>(int, FormatStringHelperImpl<>) @ 0x00000001005afb78
+5. DB::loadDiskLocalConfig(String const&, Poco::Util::AbstractConfiguration const&, String const&, std::shared_ptr<DB::Context const>, String&, unsigned long long&) @ 0x0000000109c0e84c
+6. std::shared_ptr<DB::IDisk> std::__function::__policy_invoker<std::shared_ptr<DB::IDisk> (String const&, Poco::Util::AbstractConfiguration const&, String const&, std::shared_ptr<DB::Context const>, std::map<String, std::shared_ptr<DB::IDisk>, std::less<String>, std::allocator<std::pair<String const, std::shared_ptr<DB::IDisk>>>> const&, bool, bool)>::__call_impl[abi:ne190107]<std::__function::__default_alloc_func<DB::registerDiskLocal(DB::DiskFactory&, bool)::$_0, std::shared_ptr<DB::IDisk> (String const&, Poco::Util::AbstractConfiguration const&, String const&, std::shared_ptr<DB::Context const>, std::map<String, std::shared_ptr<DB::IDisk>, std::less<String>, std::allocator<std::pair<String const, std::shared_ptr<DB::IDisk>>>> const&, bool, bool)>>(std::__function::__policy_storage const*, String const&, Poco::Util::AbstractConfiguration const&, String const&, std::shared_ptr<DB::Context const>&&, std::map<String, std::shared_ptr<DB::IDisk>, std::less<String>, std::allocator<std::pair<String const, std::shared_ptr<DB::IDisk>>>> const&, bool, bool) @ 0x0000000109beff30
+7. DB::DiskFactory::create(String const&, Poco::Util::AbstractConfiguration const&, String const&, std::shared_ptr<DB::Context const>, std::map<String, std::shared_ptr<DB::IDisk>, std::less<String>, std::allocator<std::pair<String const, std::shared_ptr<DB::IDisk>>>> const&, bool, bool, std::unordered_set<String, std::hash<String>, std::equal_to<String>, std::allocator<String>> const&) const @ 0x0000000109bdd584
+8. DB::DiskSelector::initialize(Poco::Util::AbstractConfiguration const&, String const&, std::shared_ptr<DB::Context const>, std::function<bool (Poco::Util::AbstractConfiguration const&, String const&, String const&)>) @ 0x0000000109bf2d9c
+9. DB::Context::getDiskSelector(std::lock_guard<std::mutex>&) const @ 0x000000010a1bc4fc
+10. DB::Context::getDisksMap(std::lock_guard<std::mutex>&) const @ 0x000000010a1bc8e0
+11. DB::Context::getDatabaseDisk() const @ 0x000000010a192c80
+12. DB::IDatabase::getDisk() const @ 0x0000000109bad0b8
+13. DB::DatabaseMemory::removeDataPath(std::shared_ptr<DB::Context const>) @ 0x0000000109b2741c
+14. DB::DatabaseMemory::DatabaseMemory(String const&, std::shared_ptr<DB::Context const>) @ 0x0000000109b2724c
+15. DB::DatabaseMemory* std::construct_at[abi:ne190107]<DB::DatabaseMemory, char const* const&, std::shared_ptr<DB::Context>, DB::DatabaseMemory*>(DB::DatabaseMemory*, char const* const&, std::shared_ptr<DB::Context>&&) @ 0x000000010a24afe4
+16. std::shared_ptr<DB::DatabaseMemory> std::allocate_shared[abi:ne190107]<DB::DatabaseMemory, std::allocator<DB::DatabaseMemory>, char const* const&, std::shared_ptr<DB::Context>, 0>(std::allocator<DB::DatabaseMemory> const&, char const* const&, std::shared_ptr<DB::Context>&&) @ 0x000000010a24ae58
+17. DB::DatabaseCatalog::initializeAndLoadTemporaryDatabase() @ 0x000000010a22a4b0
+18. DB::Server::main(std::vector<String, std::allocator<String>> const&) @ 0x0000000105e1aabc
+19. Poco::Util::Application::run() @ 0x000000011101df7c
+20. DB::Server::run() @ 0x0000000105e0cca0
+21. mainEntryClickHouseServer(int, char**) @ 0x0000000105e0a6c8
+22. main @ 0x000000010059c7dc
+23. start @ 0x00000001928e2b98
+ (version 25.10.1.293 (official build))
+2025.09.22 21:07:30.526124 [ 21624529 ] {} <Information> Application: Stopping AsyncLoader.
+2025.09.22 21:07:30.526277 [ 21624529 ] {} <Information> Application: Shutting down storages.
+2025.09.22 21:07:30.529720 [ 21624529 ] {} <Information> Application: Waiting for background threads
+2025.09.22 21:07:30.547297 [ 21624529 ] {} <Information> Application: Background threads finished in 17 ms
+2025.09.22 21:07:30.548020 [ 21624529 ] {} <Error> Application: Code: 137. DB::Exception: "default" disk path should be provided in <path> not it <storage_configuration>. (UNKNOWN_ELEMENT_IN_CONFIG), Stack trace (when copying this message, always include the lines below):
+
+0. Poco::Exception::Exception(String const&, int) @ 0x0000000110f259bc
+1. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000001059d30ac
+2. DB::Exception::Exception(String&&, int, String, bool) @ 0x00000001005a3498
+3. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x00000001005a30a8
+4. DB::Exception::Exception<>(int, FormatStringHelperImpl<>) @ 0x00000001005afb78
+5. DB::loadDiskLocalConfig(String const&, Poco::Util::AbstractConfiguration const&, String const&, std::shared_ptr<DB::Context const>, String&, unsigned long long&) @ 0x0000000109c0e84c
+6. std::shared_ptr<DB::IDisk> std::__function::__policy_invoker<std::shared_ptr<DB::IDisk> (String const&, Poco::Util::AbstractConfiguration const&, String const&, std::shared_ptr<DB::Context const>, std::map<String, std::shared_ptr<DB::IDisk>, std::less<String>, std::allocator<std::pair<String const, std::shared_ptr<DB::IDisk>>>> const&, bool, bool)>::__call_impl[abi:ne190107]<std::__function::__default_alloc_func<DB::registerDiskLocal(DB::DiskFactory&, bool)::$_0, std::shared_ptr<DB::IDisk> (String const&, Poco::Util::AbstractConfiguration const&, String const&, std::shared_ptr<DB::Context const>, std::map<String, std::shared_ptr<DB::IDisk>, std::less<String>, std::allocator<std::pair<String const, std::shared_ptr<DB::IDisk>>>> const&, bool, bool)>>(std::__function::__policy_storage const*, String const&, Poco::Util::AbstractConfiguration const&, String const&, std::shared_ptr<DB::Context const>&&, std::map<String, std::shared_ptr<DB::IDisk>, std::less<String>, std::allocator<std::pair<String const, std::shared_ptr<DB::IDisk>>>> const&, bool, bool) @ 0x0000000109beff30
+7. DB::DiskFactory::create(String const&, Poco::Util::AbstractConfiguration const&, String const&, std::shared_ptr<DB::Context const>, std::map<String, std::shared_ptr<DB::IDisk>, std::less<String>, std::allocator<std::pair<String const, std::shared_ptr<DB::IDisk>>>> const&, bool, bool, std::unordered_set<String, std::hash<String>, std::equal_to<String>, std::allocator<String>> const&) const @ 0x0000000109bdd584
+8. DB::DiskSelector::initialize(Poco::Util::AbstractConfiguration const&, String const&, std::shared_ptr<DB::Context const>, std::function<bool (Poco::Util::AbstractConfiguration const&, String const&, String const&)>) @ 0x0000000109bf2d9c
+9. DB::Context::getDiskSelector(std::lock_guard<std::mutex>&) const @ 0x000000010a1bc4fc
+10. DB::Context::getDisksMap(std::lock_guard<std::mutex>&) const @ 0x000000010a1bc8e0
+11. DB::Context::getDatabaseDisk() const @ 0x000000010a192c80
+12. DB::IDatabase::getDisk() const @ 0x0000000109bad0b8
+13. DB::DatabaseMemory::removeDataPath(std::shared_ptr<DB::Context const>) @ 0x0000000109b2741c
+14. DB::DatabaseMemory::DatabaseMemory(String const&, std::shared_ptr<DB::Context const>) @ 0x0000000109b2724c
+15. DB::DatabaseMemory* std::construct_at[abi:ne190107]<DB::DatabaseMemory, char const* const&, std::shared_ptr<DB::Context>, DB::DatabaseMemory*>(DB::DatabaseMemory*, char const* const&, std::shared_ptr<DB::Context>&&) @ 0x000000010a24afe4
+16. std::shared_ptr<DB::DatabaseMemory> std::allocate_shared[abi:ne190107]<DB::DatabaseMemory, std::allocator<DB::DatabaseMemory>, char const* const&, std::shared_ptr<DB::Context>, 0>(std::allocator<DB::DatabaseMemory> const&, char const* const&, std::shared_ptr<DB::Context>&&) @ 0x000000010a24ae58
+17. DB::DatabaseCatalog::initializeAndLoadTemporaryDatabase() @ 0x000000010a22a4b0
+18. DB::Server::main(std::vector<String, std::allocator<String>> const&) @ 0x0000000105e1aabc
+19. Poco::Util::Application::run() @ 0x000000011101df7c
+20. DB::Server::run() @ 0x0000000105e0cca0
+21. mainEntryClickHouseServer(int, char**) @ 0x0000000105e0a6c8
+22. main @ 0x000000010059c7dc
+23. start @ 0x00000001928e2b98
+ (version 25.10.1.293 (official build))
+2025.09.22 21:07:30.548032 [ 21624529 ] {} <Information> Application: shutting down
+2025.09.22 21:07:30.548244 [ 21624534 ] {} <Information> BaseDaemon: Stop SignalListener thread
+2025.09.22 21:07:55.844362 [ 21625657 ] {} <Information> Application: Will watch for the process with pid 35873
+2025.09.22 21:07:55.844503 [ 21625669 ] {} <Information> Application: Forked a child process to watch
+2025.09.22 21:07:55.844640 [ 21625669 ] {} <Information> Application: Starting ClickHouse 25.10.1.293 (revision: 54503, git hash: 743b8d581e7c1ec5acdc65f610367b70e0f7c7ac, build id: <unknown>), PID 35873
+2025.09.22 21:07:55.844666 [ 21625669 ] {} <Information> Application: starting up
+2025.09.22 21:07:55.844695 [ 21625669 ] {} <Information> Application: OS name: Darwin, version: 24.6.0, architecture: arm64
+2025.09.22 21:07:55.849371 [ 21625669 ] {} <Information> Application: Available RAM: 16.00 GiB; logical cores: 8; used cores: 8.
+2025.09.22 21:07:55.849375 [ 21625669 ] {} <Information> Application: Query Profiler and TraceCollector are disabled because they require PHDR cache to be created (otherwise the function 'dl_iterate_phdr' is not lock free and not async-signal safe).
+2025.09.22 21:07:55.849663 [ 21625669 ] {} <Information> StatusFile: Writing pid 35873 to ./clickhouse_data/status
+2025.09.22 21:07:55.850683 [ 21625669 ] {} <Information> MemoryWorker: Starting background memory thread with period of 100ms, using Jemalloc as source
+2025.09.22 21:07:55.850703 [ 21625669 ] {} <Information> BackgroundSchedulePool/BgSchPool: Create BackgroundSchedulePool with 512 threads
+2025.09.22 21:07:55.861970 [ 21625669 ] {} <Warning> Context: Maximum number of threads is lower than 30000. There could be problems with handling a lot of simultaneous queries.
+2025.09.22 21:07:55.864060 [ 21625669 ] {} <Information> Application: Changed setting 'max_server_memory_usage' to 14.40 GiB (16.00 GiB available memory * 0.90 max_server_memory_usage_to_ram_ratio)
+2025.09.22 21:07:55.864065 [ 21625669 ] {} <Information> Application: Setting merges_mutations_memory_usage_soft_limit was set to 8.00 GiB (16.00 GiB available * 0.50 merges_mutations_memory_usage_to_ram_ratio)
+2025.09.22 21:07:55.864066 [ 21625669 ] {} <Information> Application: Merges and mutations memory limit is set to 8.00 GiB
+2025.09.22 21:07:55.864103 [ 21625669 ] {} <Information> Application: Setting max_remote_read_network_bandwidth_for_server was set to 0
+2025.09.22 21:07:55.864104 [ 21625669 ] {} <Information> Application: Setting max_remote_write_network_bandwidth_for_server was set to 0
+2025.09.22 21:07:55.864105 [ 21625669 ] {} <Information> Application: Setting max_local_read_bandwidth_for_server was set to 0
+2025.09.22 21:07:55.864106 [ 21625669 ] {} <Information> Application: Setting max_local_write_bandwidth_for_server was set to 0
+2025.09.22 21:07:55.864113 [ 21625669 ] {} <Information> Application: ConcurrencyControl limit is set to UNLIMITED CPU slots with 'fair_round_robin' scheduler
+2025.09.22 21:07:55.864116 [ 21625669 ] {} <Information> BackgroundSchedulePool/BgBufSchPool: Create BackgroundSchedulePool with 16 threads
+2025.09.22 21:07:55.865209 [ 21625669 ] {} <Information> BackgroundSchedulePool/BgMBSchPool: Create BackgroundSchedulePool with 16 threads
+2025.09.22 21:07:55.865329 [ 21625669 ] {} <Information> BackgroundSchedulePool/BgDistSchPool: Create BackgroundSchedulePool with 16 threads
+2025.09.22 21:07:55.865904 [ 21625669 ] {} <Information> CertificateReloader: One of paths is empty. Cannot apply new configuration for certificates. Fill all paths and try again.
+2025.09.22 21:07:55.865907 [ 21625669 ] {} <Information> CertificateReloader: One of paths is empty. Cannot apply new configuration for certificates. Fill all paths and try again.
+2025.09.22 21:07:55.870716 [ 21625669 ] {} <Information> Context: Initialized background executor for merges and mutations with num_threads=16, num_tasks=32, scheduling_policy=round_robin
+2025.09.22 21:07:55.870807 [ 21625669 ] {} <Information> Context: Initialized background executor for move operations with num_threads=8, num_tasks=8
+2025.09.22 21:07:55.871351 [ 21625669 ] {} <Information> Context: Initialized background executor for fetches with num_threads=16, num_tasks=16
+2025.09.22 21:07:55.871410 [ 21625669 ] {} <Information> Context: Initialized background executor for common operations (e.g. clearing old parts) with num_threads=8, num_tasks=8
+2025.09.22 21:07:55.872007 [ 21625669 ] {} <Information> DNSCacheUpdater: Update period 15 seconds
+2025.09.22 21:07:55.872016 [ 21625669 ] {} <Information> Application: Loading metadata from ./clickhouse_data/
+2025.09.22 21:07:55.872249 [ 21625669 ] {} <Information> Context: Database disk name: default
+2025.09.22 21:07:55.872253 [ 21625669 ] {} <Information> Context: Database disk name: default, path: ./clickhouse_data/
+2025.09.22 21:07:55.875634 [ 21625669 ] {} <Information> DatabaseAtomic (system): Metadata disk default, path ./clickhouse_data/
+2025.09.22 21:07:55.877986 [ 21625669 ] {} <Information> DatabaseAtomic (system): Metadata processed, database system has 0 tables, 0 dictionaries and 0 materialized views in total.
+2025.09.22 21:07:55.877991 [ 21625669 ] {} <Information> TablesLoader: Parsed metadata of 0 tables in 1 databases in 0.000704708 sec
+2025.09.22 21:07:55.904704 [ 21625669 ] {} <Information> DatabaseAtomic (default): Metadata disk default, path ./clickhouse_data/
+2025.09.22 21:07:55.904887 [ 21625669 ] {} <Information> DatabaseAtomic (default): Metadata processed, database default has 0 tables, 0 dictionaries and 0 materialized views in total.
+2025.09.22 21:07:55.904891 [ 21625669 ] {} <Information> TablesLoader: Parsed metadata of 0 tables in 1 databases in 6.084e-06 sec
+2025.09.22 21:07:55.904909 [ 21625669 ] {} <Information> loadMetadata: Start asynchronous loading of databases
+2025.09.22 21:07:55.905102 [ 21625669 ] {} <Information> UserDefinedSQLObjectsLoaderFromDisk: Loading user defined objects from /Users/salilkapur/work/reflex/api/clickhouse_data/user_defined/
+2025.09.22 21:07:55.905128 [ 21625669 ] {} <Information> WorkloadEntityDiskStorage: Loading workload entities from /Users/salilkapur/work/reflex/api/clickhouse_data/workload/
+2025.09.22 21:07:55.905131 [ 21625669 ] {} <Information> Application: TaskStats is not implemented for this OS. IO accounting will be disabled.
+2025.09.22 21:07:55.905848 [ 21625669 ] {} <Information> CertificateReloader: One of paths is empty. Cannot apply new configuration for certificates. Fill all paths and try again.
+2025.09.22 21:07:55.905850 [ 21625669 ] {} <Information> CertificateReloader: One of paths is empty. Cannot apply new configuration for certificates. Fill all paths and try again.
+2025.09.22 21:07:55.906947 [ 21625669 ] {} <Information> Application: Listening for http://127.0.0.1:8123
+2025.09.22 21:07:55.906956 [ 21625669 ] {} <Information> Application: Listening for native protocol (tcp): 127.0.0.1:9000
+2025.09.22 21:07:55.906957 [ 21625669 ] {} <Information> Application: Ready for connections.
+2025.09.22 21:07:55.952060 [ 21625678 ] {} <Information> MemoryTracker: Correcting the value of global memory tracker from 62.50 MiB to 370.31 MiB
+2025.09.22 21:09:09.581495 [ 21625675 ] {99bf8c45-5063-4f85-b645-d24ebc813270} <Information> DatabaseAtomic (video_episodes): Metadata disk default, path ./clickhouse_data/
+2025.09.22 21:09:09.581701 [ 21625675 ] {99bf8c45-5063-4f85-b645-d24ebc813270} <Information> DatabaseAtomic (video_episodes): Metadata processed, database video_episodes has 0 tables, 0 dictionaries and 0 materialized views in total.
+2025.09.22 21:09:09.581704 [ 21625675 ] {99bf8c45-5063-4f85-b645-d24ebc813270} <Information> TablesLoader: Parsed metadata of 0 tables in 1 databases in 8.542e-06 sec
+2025.09.22 21:10:04.683469 [ 21625676 ] {23df9979-2fb5-4325-b166-bb74a6877016} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_2.txt
+2025.09.22 21:10:04.697036 [ 21625676 ] {5d855cdd-1fcb-4ee6-982f-8f3cf94d2cd1} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_3.txt
+2025.09.22 21:11:42.054193 [ 21625676 ] {1cb58f71-253c-46c4-ba0a-e70cb926720e} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_5.txt
+2025.09.22 21:11:42.067507 [ 21625676 ] {e4fd9ca9-ce96-40ae-a573-9fe03ccc618e} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_6.txt
+2025.09.22 21:11:42.076797 [ 21625676 ] {a8df02f2-3fab-4ee6-b6e2-db112eb3da78} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_7.txt
+2025.09.22 21:13:07.485983 [ 21625676 ] {c7fd0c2c-859b-48db-a44b-a6aa138c8d78} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_9.txt
+2025.09.22 21:13:07.499655 [ 21625676 ] {05968e74-39df-48a9-83ee-e395e804b100} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_10.txt
+2025.09.22 21:13:07.505224 [ 21625676 ] {3c6e66d1-6aae-4076-a7af-5385855737b0} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_11.txt
+2025.09.22 21:19:57.612769 [ 21625675 ] {e2f59f94-c1de-47ba-9791-d86d59a3dcc3} <Error> executeQuery: Code: 57. DB::Exception: Table video_episodes.videos already exists. (TABLE_ALREADY_EXISTS) (version 25.10.1.293 (official build)) (from 127.0.0.1:59236) (query 3, line 8) (in query: -- Videos table - stores video file information
+ CREATE TABLE videos ( id String, filename String, file_path String, file_size UInt64, duration_seconds Float32, chunk_length_seconds UInt32, total_chunks UInt32, processing_status LowCardinality(String) DEFAULT 'pending', -- pending, processing, completed, failed
+ -- Timestamps
+ created_at DateTime DEFAULT now(), updated_at DateTime DEFAULT now(), processing_started_at Nullable(DateTime), processing_completed_at Nullable(DateTime), -- Video metadata (configurable JSON)
+ metadata String DEFAULT '{}', -- JSON string for flexible metadata
+ -- File hash for deduplication
+ file_hash String DEFAULT '', -- Processing statistics
+ total_episodes UInt32 DEFAULT 0, successful_episodes UInt32 DEFAULT 0, failed_episodes UInt32 DEFAULT 0 ) ENGINE = MergeTree() ORDER BY (id, created_at) SETTINGS index_granularity = 8192;), Stack trace (when copying this message, always include the lines below):
+
+0. Poco::Exception::Exception(String const&, int) @ 0x0000000112db59bc
+1. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000001078630ac
+2. DB::Exception::Exception(String&&, int, String, bool) @ 0x0000000102433498
+3. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x00000001024330a8
+4. DB::Exception::Exception<String, String>(int, FormatStringHelperImpl<std::type_identity<String>::type, std::type_identity<String>::type>, String&&, String&&) @ 0x0000000102432840
+5. DB::InterpreterCreateQuery::doCreateTable(DB::ASTCreateQuery&, DB::InterpreterCreateQuery::TableProperties const&, std::unique_ptr<DB::DDLGuard, std::default_delete<DB::DDLGuard>>&, DB::LoadingStrictnessLevel) @ 0x000000010c1bbe9c
+6. DB::InterpreterCreateQuery::createTable(DB::ASTCreateQuery&) @ 0x000000010c1b54c0
+7. DB::InterpreterCreateQuery::execute() @ 0x000000010c1c0534
+8. DB::executeQueryImpl(char const*, char const*, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum, std::unique_ptr<DB::ReadBuffer, std::default_delete<DB::ReadBuffer>>&, std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::ImplicitTransactionControlExecutor>) @ 0x000000010c58c9e8
+9. DB::executeQuery(String const&, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum) @ 0x000000010c588bbc
+10. DB::TCPHandler::runImpl() @ 0x000000010f4a0e64
+11. DB::TCPHandler::run() @ 0x000000010f4ba3a4
+12. Poco::Net::TCPServerConnection::start() @ 0x0000000112e84b98
+13. Poco::Net::TCPServerDispatcher::run() @ 0x0000000112e85278
+14. Poco::PooledThread::run() @ 0x0000000112e255c8
+15. Poco::ThreadImpl::runnableEntry(void*) @ 0x0000000112e22728
+16. _pthread_start @ 0x0000000192c83c0c
+17. thread_start @ 0x0000000192c7eb80
+
+2025.09.22 21:19:57.613355 [ 21625675 ] {} <Error> TCPHandler: Code: 57. DB::Exception: Table video_episodes.videos already exists. (TABLE_ALREADY_EXISTS), Stack trace (when copying this message, always include the lines below):
+
+0. Poco::Exception::Exception(String const&, int) @ 0x0000000112db59bc
+1. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000001078630ac
+2. DB::Exception::Exception(String&&, int, String, bool) @ 0x0000000102433498
+3. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x00000001024330a8
+4. DB::Exception::Exception<String, String>(int, FormatStringHelperImpl<std::type_identity<String>::type, std::type_identity<String>::type>, String&&, String&&) @ 0x0000000102432840
+5. DB::InterpreterCreateQuery::doCreateTable(DB::ASTCreateQuery&, DB::InterpreterCreateQuery::TableProperties const&, std::unique_ptr<DB::DDLGuard, std::default_delete<DB::DDLGuard>>&, DB::LoadingStrictnessLevel) @ 0x000000010c1bbe9c
+6. DB::InterpreterCreateQuery::createTable(DB::ASTCreateQuery&) @ 0x000000010c1b54c0
+7. DB::InterpreterCreateQuery::execute() @ 0x000000010c1c0534
+8. DB::executeQueryImpl(char const*, char const*, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum, std::unique_ptr<DB::ReadBuffer, std::default_delete<DB::ReadBuffer>>&, std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::ImplicitTransactionControlExecutor>) @ 0x000000010c58c9e8
+9. DB::executeQuery(String const&, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum) @ 0x000000010c588bbc
+10. DB::TCPHandler::runImpl() @ 0x000000010f4a0e64
+11. DB::TCPHandler::run() @ 0x000000010f4ba3a4
+12. Poco::Net::TCPServerConnection::start() @ 0x0000000112e84b98
+13. Poco::Net::TCPServerDispatcher::run() @ 0x0000000112e85278
+14. Poco::PooledThread::run() @ 0x0000000112e255c8
+15. Poco::ThreadImpl::runnableEntry(void*) @ 0x0000000112e22728
+16. _pthread_start @ 0x0000000192c83c0c
+17. thread_start @ 0x0000000192c7eb80
+
+2025.09.22 21:22:23.497329 [ 21625676 ] {ab67ee82-d125-4f15-8733-8ea3c168a014} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Added mutation: mutation_4.txt
+2025.09.22 22:59:03.975929 [ 21625675 ] {976aecc1-dfe9-4253-bc45-55e9e8c92994} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Added mutation: mutation_5.txt
+2025.09.22 22:59:03.975971 [ 21625675 ] {976aecc1-dfe9-4253-bc45-55e9e8c92994} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Waiting mutation: mutation_5.txt
+2025.09.22 22:59:04.004216 [ 21625675 ] {976aecc1-dfe9-4253-bc45-55e9e8c92994} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Mutation mutation_5.txt done
+2025.09.22 22:59:04.132559 [ 21625675 ] {a4a9ed18-97c0-41dd-8bfc-a5e59c884d63} <Information> video_episodes.processing_chunks (80c01914-cc59-42da-93a1-4a1131bb2d1e): Added mutation: mutation_10.txt
+2025.09.22 22:59:04.132588 [ 21625675 ] {a4a9ed18-97c0-41dd-8bfc-a5e59c884d63} <Information> video_episodes.processing_chunks (80c01914-cc59-42da-93a1-4a1131bb2d1e): Waiting mutation: mutation_10.txt
+2025.09.22 22:59:04.149002 [ 21625675 ] {a4a9ed18-97c0-41dd-8bfc-a5e59c884d63} <Information> video_episodes.processing_chunks (80c01914-cc59-42da-93a1-4a1131bb2d1e): Mutation mutation_10.txt done
+2025.09.22 22:59:04.271703 [ 21625675 ] {d44e5cdf-3255-471e-be86-df69b04c86a6} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_12.txt
+2025.09.22 22:59:04.271719 [ 21625675 ] {d44e5cdf-3255-471e-be86-df69b04c86a6} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Waiting mutation: mutation_12.txt
+2025.09.22 22:59:04.290762 [ 21625675 ] {d44e5cdf-3255-471e-be86-df69b04c86a6} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Mutation mutation_12.txt done
+2025.09.22 23:06:56.525406 [ 21625677 ] {f6ff7c86-5a08-4595-8e69-53b54215d176} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_14.txt
+2025.09.22 23:06:56.536886 [ 21625677 ] {9c722d77-60a2-4368-984f-54d5f2e91595} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_16.txt
+2025.09.22 23:10:59.510394 [ 21625677 ] {44c40888-027d-429a-8ba4-b57292536406} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_18.txt
+2025.09.22 23:11:59.152269 [ 21625677 ] {06c2cb30-3b63-48d3-bf1d-9a9b9172b68c} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_19.txt
+2025.09.22 23:13:26.653324 [ 21625675 ] {043b6dc8-9151-4d4a-8099-c9961b76b24d} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_20.txt
+2025.09.22 23:13:26.653354 [ 21625675 ] {043b6dc8-9151-4d4a-8099-c9961b76b24d} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Waiting mutation: mutation_20.txt
+2025.09.22 23:13:26.673436 [ 21625675 ] {043b6dc8-9151-4d4a-8099-c9961b76b24d} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Mutation mutation_20.txt done
+2025.09.22 23:14:33.765544 [ 21625677 ] {741731f9-a549-4b47-96a2-8c3c1e9b8714} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_21.txt
+2025.09.22 23:14:33.765585 [ 21625677 ] {741731f9-a549-4b47-96a2-8c3c1e9b8714} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Waiting mutation: mutation_21.txt
+2025.09.22 23:14:33.789358 [ 21625677 ] {741731f9-a549-4b47-96a2-8c3c1e9b8714} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Mutation mutation_21.txt done
+2025.09.22 23:14:33.925021 [ 21625677 ] {0580b90f-d1a8-437b-ab6c-db9cdef2d9a7} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_23.txt
+2025.09.22 23:14:36.295395 [ 21625675 ] {e5dd8883-e09e-432f-987d-97e1e95e491b} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_24.txt
+2025.09.22 23:14:48.147858 [ 21625675 ] {48a5c6d2-69e1-4ba1-9825-877ceceffd0f} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_25.txt
+2025.09.22 23:15:27.979086 [ 21625677 ] {1f31af37-d3b5-4647-95dc-e9fc6f775df9} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_26.txt
+2025.09.22 23:16:15.010089 [ 21625675 ] {8e7d2971-c7a0-4e53-a9bf-8635fb22b441} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_27.txt
+2025.09.22 23:20:27.109534 [ 21625677 ] {5d813fe5-b6e6-41a1-9e18-1a2a92c7c0e6} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_28.txt
+2025.09.22 23:20:27.112951 [ 21625677 ] {735fe04b-66d3-4985-95a2-3226d29c92d2} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_29.txt
+2025.09.22 23:20:27.112974 [ 21625677 ] {735fe04b-66d3-4985-95a2-3226d29c92d2} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Waiting mutation: mutation_29.txt
+2025.09.22 23:20:27.566582 [ 21625677 ] {735fe04b-66d3-4985-95a2-3226d29c92d2} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Mutation mutation_29.txt done
+2025.09.22 23:20:27.706091 [ 21625677 ] {28be68ca-e277-4a34-a9ed-9f06966d50b6} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_31.txt
+2025.09.22 23:20:27.727123 [ 21625677 ] {d1055ec0-2398-4aba-96a1-b5c0ba53fc59} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_32.txt
+2025.09.22 23:21:32.594736 [ 21625675 ] {90c1d3e4-bd15-458f-b311-c2a3db597c2d} <Error> executeQuery: Code: 60. DB::Exception: Unknown table expression identifier 'videos' in scope SELECT id, filename, processing_status, total_episodes, successful_episodes FROM videos ORDER BY created_at DESC. (UNKNOWN_TABLE) (version 25.10.1.293 (official build)) (from 127.0.0.1:64270) (query 1, line 1) (in query: SELECT id, filename, processing_status, total_episodes, successful_episodes FROM videos ORDER BY created_at DESC), Stack trace (when copying this message, always include the lines below):
+
+0. Poco::Exception::Exception(String const&, int) @ 0x0000000112db59bc
+1. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000001078630ac
+2. DB::Exception::Exception(String&&, int, String, bool) @ 0x0000000102433498
+3. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x00000001024330a8
+4. DB::Exception::Exception<String const&, String>(int, FormatStringHelperImpl<std::type_identity<String const&>::type, std::type_identity<String>::type>, String const&, String&&) @ 0x0000000102e80580
+5. DB::QueryAnalyzer::initializeQueryJoinTreeNode(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&) @ 0x000000010bb8691c
+6. DB::QueryAnalyzer::resolveQuery(std::shared_ptr<DB::IQueryTreeNode> const&, DB::IdentifierResolveScope&) @ 0x000000010bb690e4
+7. DB::QueryAnalyzer::resolve(std::shared_ptr<DB::IQueryTreeNode>&, std::shared_ptr<DB::IQueryTreeNode> const&, std::shared_ptr<DB::Context const>) @ 0x000000010bb684b0
+8. DB::QueryAnalysisPass::run(std::shared_ptr<DB::IQueryTreeNode>&, std::shared_ptr<DB::Context const>) @ 0x000000010bb67aa0
+9. DB::QueryTreePassManager::run(std::shared_ptr<DB::IQueryTreeNode>) @ 0x000000010bad607c
+10. DB::buildQueryTreeAndRunPasses(std::shared_ptr<DB::IAST> const&, DB::SelectQueryOptions const&, std::shared_ptr<DB::Context const> const&, std::shared_ptr<DB::IStorage> const&) @ 0x000000010c23455c
+11. DB::InterpreterSelectQueryAnalyzer::InterpreterSelectQueryAnalyzer(std::shared_ptr<DB::IAST> const&, std::shared_ptr<DB::Context const> const&, DB::SelectQueryOptions const&, std::vector<String, std::allocator<String>> const&) @ 0x000000010c232d60
+12. std::unique_ptr<DB::IInterpreter, std::default_delete<DB::IInterpreter>> std::__function::__policy_invoker<std::unique_ptr<DB::IInterpreter, std::default_delete<DB::IInterpreter>> (DB::InterpreterFactory::Arguments const&)>::__call_impl[abi:ne190107]<std::__function::__default_alloc_func<DB::registerInterpreterSelectQueryAnalyzer(DB::InterpreterFactory&)::$_0, std::unique_ptr<DB::IInterpreter, std::default_delete<DB::IInterpreter>> (DB::InterpreterFactory::Arguments const&)>>(std::__function::__policy_storage const*, DB::InterpreterFactory::Arguments const&) @ 0x000000010c235fa4
+13. DB::InterpreterFactory::get(std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::Context>, DB::SelectQueryOptions const&) @ 0x000000010c1eb11c
+14. DB::executeQueryImpl(char const*, char const*, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum, std::unique_ptr<DB::ReadBuffer, std::default_delete<DB::ReadBuffer>>&, std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::ImplicitTransactionControlExecutor>) @ 0x000000010c58c234
+15. DB::executeQuery(String const&, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum) @ 0x000000010c588bbc
+16. DB::TCPHandler::runImpl() @ 0x000000010f4a0e64
+17. DB::TCPHandler::run() @ 0x000000010f4ba3a4
+18. Poco::Net::TCPServerConnection::start() @ 0x0000000112e84b98
+19. Poco::Net::TCPServerDispatcher::run() @ 0x0000000112e85278
+20. Poco::PooledThread::run() @ 0x0000000112e255c8
+21. Poco::ThreadImpl::runnableEntry(void*) @ 0x0000000112e22728
+22. _pthread_start @ 0x0000000192c83c0c
+23. thread_start @ 0x0000000192c7eb80
+
+2025.09.22 23:21:32.595041 [ 21625675 ] {} <Error> TCPHandler: Code: 60. DB::Exception: Unknown table expression identifier 'videos' in scope SELECT id, filename, processing_status, total_episodes, successful_episodes FROM videos ORDER BY created_at DESC. (UNKNOWN_TABLE), Stack trace (when copying this message, always include the lines below):
+
+0. Poco::Exception::Exception(String const&, int) @ 0x0000000112db59bc
+1. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000001078630ac
+2. DB::Exception::Exception(String&&, int, String, bool) @ 0x0000000102433498
+3. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x00000001024330a8
+4. DB::Exception::Exception<String const&, String>(int, FormatStringHelperImpl<std::type_identity<String const&>::type, std::type_identity<String>::type>, String const&, String&&) @ 0x0000000102e80580
+5. DB::QueryAnalyzer::initializeQueryJoinTreeNode(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&) @ 0x000000010bb8691c
+6. DB::QueryAnalyzer::resolveQuery(std::shared_ptr<DB::IQueryTreeNode> const&, DB::IdentifierResolveScope&) @ 0x000000010bb690e4
+7. DB::QueryAnalyzer::resolve(std::shared_ptr<DB::IQueryTreeNode>&, std::shared_ptr<DB::IQueryTreeNode> const&, std::shared_ptr<DB::Context const>) @ 0x000000010bb684b0
+8. DB::QueryAnalysisPass::run(std::shared_ptr<DB::IQueryTreeNode>&, std::shared_ptr<DB::Context const>) @ 0x000000010bb67aa0
+9. DB::QueryTreePassManager::run(std::shared_ptr<DB::IQueryTreeNode>) @ 0x000000010bad607c
+10. DB::buildQueryTreeAndRunPasses(std::shared_ptr<DB::IAST> const&, DB::SelectQueryOptions const&, std::shared_ptr<DB::Context const> const&, std::shared_ptr<DB::IStorage> const&) @ 0x000000010c23455c
+11. DB::InterpreterSelectQueryAnalyzer::InterpreterSelectQueryAnalyzer(std::shared_ptr<DB::IAST> const&, std::shared_ptr<DB::Context const> const&, DB::SelectQueryOptions const&, std::vector<String, std::allocator<String>> const&) @ 0x000000010c232d60
+12. std::unique_ptr<DB::IInterpreter, std::default_delete<DB::IInterpreter>> std::__function::__policy_invoker<std::unique_ptr<DB::IInterpreter, std::default_delete<DB::IInterpreter>> (DB::InterpreterFactory::Arguments const&)>::__call_impl[abi:ne190107]<std::__function::__default_alloc_func<DB::registerInterpreterSelectQueryAnalyzer(DB::InterpreterFactory&)::$_0, std::unique_ptr<DB::IInterpreter, std::default_delete<DB::IInterpreter>> (DB::InterpreterFactory::Arguments const&)>>(std::__function::__policy_storage const*, DB::InterpreterFactory::Arguments const&) @ 0x000000010c235fa4
+13. DB::InterpreterFactory::get(std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::Context>, DB::SelectQueryOptions const&) @ 0x000000010c1eb11c
+14. DB::executeQueryImpl(char const*, char const*, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum, std::unique_ptr<DB::ReadBuffer, std::default_delete<DB::ReadBuffer>>&, std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::ImplicitTransactionControlExecutor>) @ 0x000000010c58c234
+15. DB::executeQuery(String const&, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum) @ 0x000000010c588bbc
+16. DB::TCPHandler::runImpl() @ 0x000000010f4a0e64
+17. DB::TCPHandler::run() @ 0x000000010f4ba3a4
+18. Poco::Net::TCPServerConnection::start() @ 0x0000000112e84b98
+19. Poco::Net::TCPServerDispatcher::run() @ 0x0000000112e85278
+20. Poco::PooledThread::run() @ 0x0000000112e255c8
+21. Poco::ThreadImpl::runnableEntry(void*) @ 0x0000000112e22728
+22. _pthread_start @ 0x0000000192c83c0c
+23. thread_start @ 0x0000000192c7eb80
+
+2025.09.22 23:21:40.083675 [ 21625677 ] {ebb27417-51aa-46a3-83c8-de350b2c918b} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_33.txt
+2025.09.22 23:21:40.086338 [ 21625677 ] {44b8da4c-8db2-480f-a7ad-af0102102ac9} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_34.txt
+2025.09.22 23:21:40.086352 [ 21625677 ] {44b8da4c-8db2-480f-a7ad-af0102102ac9} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Waiting mutation: mutation_34.txt
+2025.09.22 23:21:41.138400 [ 21625677 ] {44b8da4c-8db2-480f-a7ad-af0102102ac9} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Mutation mutation_34.txt done
+2025.09.22 23:21:41.299321 [ 21625677 ] {c312f11e-9455-44b0-90ac-b4cae911a8d2} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_36.txt
+2025.09.22 23:21:41.330506 [ 21625677 ] {c1867f3e-369e-40a3-a64c-6a28c0da4df0} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_37.txt
+2025.09.22 23:24:07.645391 [ 21625675 ] {3aa47013-4ced-4b18-9d7c-1cbf0c4bad9b} <Error> executeQuery: Code: 48. DB::Exception: Lightweight updates are not supported. Lightweight updates are supported only for tables with materialized _block_number column. Run 'MODIFY SETTING enable_block_number_column = 1' command to enable it. (NOT_IMPLEMENTED) (version 25.10.1.293 (official build)) (from 127.0.0.1:64454) (query 2, line 1) (in query: UPDATE videos SET processing_status = 'completed', total_episodes = 2, successful_episodes = 2, processing_completed_at = now() WHERE id = 'ddf4492e-bc8f-43d6-b99d-ce6a8ffe1097'), Stack trace (when copying this message, always include the lines below):
+
+0. Poco::Exception::Exception(String const&, int) @ 0x0000000112db59bc
+1. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000001078630ac
+2. DB::Exception::Exception(String&&, int, String, bool) @ 0x0000000102433498
+3. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x00000001024330a8
+4. DB::Exception::Exception<String&>(int, FormatStringHelperImpl<std::type_identity<String&>::type>, String&) @ 0x000000010244af3c
+5. DB::InterpreterUpdateQuery::execute() @ 0x000000010c261328
+6. DB::executeQueryImpl(char const*, char const*, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum, std::unique_ptr<DB::ReadBuffer, std::default_delete<DB::ReadBuffer>>&, std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::ImplicitTransactionControlExecutor>) @ 0x000000010c58c9e8
+7. DB::executeQuery(String const&, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum) @ 0x000000010c588bbc
+8. DB::TCPHandler::runImpl() @ 0x000000010f4a0e64
+9. DB::TCPHandler::run() @ 0x000000010f4ba3a4
+10. Poco::Net::TCPServerConnection::start() @ 0x0000000112e84b98
+11. Poco::Net::TCPServerDispatcher::run() @ 0x0000000112e85278
+12. Poco::PooledThread::run() @ 0x0000000112e255c8
+13. Poco::ThreadImpl::runnableEntry(void*) @ 0x0000000112e22728
+14. _pthread_start @ 0x0000000192c83c0c
+15. thread_start @ 0x0000000192c7eb80
+
+2025.09.22 23:24:07.645526 [ 21625675 ] {} <Error> TCPHandler: Code: 48. DB::Exception: Lightweight updates are not supported. Lightweight updates are supported only for tables with materialized _block_number column. Run 'MODIFY SETTING enable_block_number_column = 1' command to enable it. (NOT_IMPLEMENTED), Stack trace (when copying this message, always include the lines below):
+
+0. Poco::Exception::Exception(String const&, int) @ 0x0000000112db59bc
+1. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000001078630ac
+2. DB::Exception::Exception(String&&, int, String, bool) @ 0x0000000102433498
+3. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x00000001024330a8
+4. DB::Exception::Exception<String&>(int, FormatStringHelperImpl<std::type_identity<String&>::type>, String&) @ 0x000000010244af3c
+5. DB::InterpreterUpdateQuery::execute() @ 0x000000010c261328
+6. DB::executeQueryImpl(char const*, char const*, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum, std::unique_ptr<DB::ReadBuffer, std::default_delete<DB::ReadBuffer>>&, std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::ImplicitTransactionControlExecutor>) @ 0x000000010c58c9e8
+7. DB::executeQuery(String const&, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum) @ 0x000000010c588bbc
+8. DB::TCPHandler::runImpl() @ 0x000000010f4a0e64
+9. DB::TCPHandler::run() @ 0x000000010f4ba3a4
+10. Poco::Net::TCPServerConnection::start() @ 0x0000000112e84b98
+11. Poco::Net::TCPServerDispatcher::run() @ 0x0000000112e85278
+12. Poco::PooledThread::run() @ 0x0000000112e255c8
+13. Poco::ThreadImpl::runnableEntry(void*) @ 0x0000000112e22728
+14. _pthread_start @ 0x0000000192c83c0c
+15. thread_start @ 0x0000000192c7eb80
+
+2025.09.22 23:24:12.076797 [ 21625675 ] {2ac56b3f-40f8-4ad5-83a4-2bd0e60f5cd1} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_38.txt
+2025.09.22 23:24:16.860547 [ 21625675 ] {c21eb327-ccf1-4300-8f4f-400adb67a332} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_39.txt
+2025.09.22 23:25:14.688516 [ 21625675 ] {7542528e-6467-4358-beb7-b4554c0ed9dc} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_40.txt
+2025.09.22 23:25:19.422831 [ 21625675 ] {7085516e-39cc-47c2-8ed8-d2db422aa3ae} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_41.txt
+2025.09.22 23:25:24.023452 [ 21625677 ] {8847e3d6-acb8-462a-aa3b-a081ed82e7b7} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_42.txt
+2025.09.22 23:25:24.023479 [ 21625677 ] {8847e3d6-acb8-462a-aa3b-a081ed82e7b7} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Waiting mutation: mutation_42.txt
+2025.09.22 23:25:24.042715 [ 21625677 ] {8847e3d6-acb8-462a-aa3b-a081ed82e7b7} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Mutation mutation_42.txt done
+2025.09.22 23:25:24.183862 [ 21625677 ] {c48f3d91-410c-4aac-84e2-73833507c829} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_44.txt
+2025.09.22 23:25:24.211918 [ 21625677 ] {2346d544-1e4e-4643-a67c-7f6e311f5d17} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_45.txt
+2025.09.22 23:26:00.922885 [ 21625675 ] {81fa2e7f-ebdd-4c50-a8b3-1d701123b752} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_46.txt
+2025.09.22 23:26:00.922913 [ 21625675 ] {81fa2e7f-ebdd-4c50-a8b3-1d701123b752} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Waiting mutation: mutation_46.txt
+2025.09.22 23:26:00.943823 [ 21625675 ] {81fa2e7f-ebdd-4c50-a8b3-1d701123b752} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Mutation mutation_46.txt done
+2025.09.22 23:26:04.651162 [ 21625677 ] {1225eaba-b087-424e-b677-745f60496aad} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_48.txt
+2025.09.22 23:26:04.676230 [ 21625677 ] {6a21ee15-2642-42fd-a1e3-0e725703053a} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_49.txt
+2025.09.22 23:28:19.777507 [ 21625675 ] {dc7cfdcb-7f9c-4d62-a224-fd4a32840191} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_50.txt
+2025.09.22 23:28:19.777540 [ 21625675 ] {dc7cfdcb-7f9c-4d62-a224-fd4a32840191} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Waiting mutation: mutation_50.txt
+2025.09.22 23:28:19.791217 [ 21625675 ] {dc7cfdcb-7f9c-4d62-a224-fd4a32840191} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Mutation mutation_50.txt done
+2025.09.22 23:28:24.561837 [ 21625677 ] {23f5453d-a9d0-40c7-846e-bd20a240d1ee} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_52.txt
+2025.09.22 23:28:24.584946 [ 21625677 ] {0bcc2e36-f428-4d14-908a-7fcdacaaf089} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_53.txt
+2025.09.22 23:28:24.591883 [ 21625677 ] {cc7d99bd-7818-4825-9a4f-aea6e4eaae7e} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_54.txt
+2025.09.22 23:30:47.151191 [ 21625675 ] {4b652dac-014d-44a5-9c92-8df59dca0c02} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_55.txt
+2025.09.22 23:30:47.151226 [ 21625675 ] {4b652dac-014d-44a5-9c92-8df59dca0c02} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Waiting mutation: mutation_55.txt
+2025.09.22 23:30:47.169818 [ 21625675 ] {4b652dac-014d-44a5-9c92-8df59dca0c02} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Mutation mutation_55.txt done
+2025.09.22 23:30:51.762028 [ 21625677 ] {b9b63a60-973e-40c4-87e4-d6ac05fab748} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_57.txt
+2025.09.22 23:30:51.777378 [ 21625677 ] {1e69197c-0caa-4ef1-8c89-6403d8f58d30} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_58.txt
+2025.09.22 23:30:51.785274 [ 21625677 ] {b82cfb22-b745-4892-8430-4581f68c3e6a} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_59.txt
+2025.09.22 23:32:28.697986 [ 21625675 ] {543de3f7-107a-4858-bb0e-d9be2e06abc5} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Added mutation: mutation_8.txt
+2025.09.22 23:35:31.477023 [ 21625677 ] {4ac9bdaa-a5aa-4617-8351-d8277fe13dc6} <Error> executeQuery: Code: 46. DB::Exception: Function with name `JSON_EXTRACT_STRING` does not exist. In scope SELECT count() AS total_episodes, sumIf(1, JSON_EXTRACT_STRING(metadata, '$.annotation.status') = 'success') AS successful_episodes, sumIf(1, JSON_EXTRACT_STRING(metadata, '$.annotation.status') = 'failure') AS failed_episodes, sumIf(1, JSON_EXTRACT_STRING(metadata, '$.annotation.status') = 'not_classified') AS not_classified_episodes FROM episodes. Maybe you meant: ['JSONExtractString','JSONExtractUInt']. (UNKNOWN_FUNCTION) (version 25.10.1.293 (official build)) (from 127.0.0.1:49400) (in query:  SELECT count() as total_episodes, sumIf(1, JSON_EXTRACT_STRING(metadata, '$.annotation.status') = 'success') as successful_episodes, sumIf(1, JSON_EXTRACT_STRING(metadata, '$.annotation.status') = 'failure') as failed_episodes, sumIf(1, JSON_EXTRACT_STRING(metadata, '$.annotation.status') = 'not_classified') as not_classified_episodes FROM episodes FORMAT Native), Stack trace (when copying this message, always include the lines below):
+
+0. Poco::Exception::Exception(String const&, int) @ 0x0000000112db59bc
+1. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000001078630ac
+2. DB::Exception::Exception(String&&, int, String, bool) @ 0x0000000102433498
+3. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x00000001024330a8
+4. DB::Exception::Exception<String, String, String>(int, FormatStringHelperImpl<std::type_identity<String>::type, std::type_identity<String>::type, std::type_identity<String>::type>, String&&, String&&, String&&) @ 0x00000001024e4dc4
+5. DB::QueryAnalyzer::resolveFunction(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&) @ 0x000000010bbacb18
+6. DB::QueryAnalyzer::resolveExpressionNode(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&, bool, bool, bool) @ 0x000000010bb6dde0
+7. DB::QueryAnalyzer::resolveExpressionNodeList(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&, bool, bool) @ 0x000000010bb6d4ec
+8. DB::QueryAnalyzer::resolveFunction(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&) @ 0x000000010bba79a8
+9. DB::QueryAnalyzer::resolveExpressionNode(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&, bool, bool, bool) @ 0x000000010bb6dde0
+10. DB::QueryAnalyzer::resolveExpressionNodeList(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&, bool, bool) @ 0x000000010bb6d4ec
+11. DB::QueryAnalyzer::resolveFunction(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&) @ 0x000000010bba79a8
+12. DB::QueryAnalyzer::resolveExpressionNode(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&, bool, bool, bool) @ 0x000000010bb6dde0
+13. DB::QueryAnalyzer::resolveExpressionNodeList(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&, bool, bool) @ 0x000000010bb6d4ec
+14. DB::QueryAnalyzer::resolveProjectionExpressionNodeList(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&) @ 0x000000010bb85774
+15. DB::QueryAnalyzer::resolveQuery(std::shared_ptr<DB::IQueryTreeNode> const&, DB::IdentifierResolveScope&) @ 0x000000010bb691ac
+16. DB::QueryAnalyzer::resolve(std::shared_ptr<DB::IQueryTreeNode>&, std::shared_ptr<DB::IQueryTreeNode> const&, std::shared_ptr<DB::Context const>) @ 0x000000010bb684b0
+17. DB::QueryAnalysisPass::run(std::shared_ptr<DB::IQueryTreeNode>&, std::shared_ptr<DB::Context const>) @ 0x000000010bb67aa0
+18. DB::QueryTreePassManager::run(std::shared_ptr<DB::IQueryTreeNode>) @ 0x000000010bad607c
+19. DB::buildQueryTreeAndRunPasses(std::shared_ptr<DB::IAST> const&, DB::SelectQueryOptions const&, std::shared_ptr<DB::Context const> const&, std::shared_ptr<DB::IStorage> const&) @ 0x000000010c23455c
+20. DB::InterpreterSelectQueryAnalyzer::InterpreterSelectQueryAnalyzer(std::shared_ptr<DB::IAST> const&, std::shared_ptr<DB::Context const> const&, DB::SelectQueryOptions const&, std::vector<String, std::allocator<String>> const&) @ 0x000000010c232d60
+21. std::unique_ptr<DB::IInterpreter, std::default_delete<DB::IInterpreter>> std::__function::__policy_invoker<std::unique_ptr<DB::IInterpreter, std::default_delete<DB::IInterpreter>> (DB::InterpreterFactory::Arguments const&)>::__call_impl[abi:ne190107]<std::__function::__default_alloc_func<DB::registerInterpreterSelectQueryAnalyzer(DB::InterpreterFactory&)::$_0, std::unique_ptr<DB::IInterpreter, std::default_delete<DB::IInterpreter>> (DB::InterpreterFactory::Arguments const&)>>(std::__function::__policy_storage const*, DB::InterpreterFactory::Arguments const&) @ 0x000000010c235fa4
+22. DB::InterpreterFactory::get(std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::Context>, DB::SelectQueryOptions const&) @ 0x000000010c1eb11c
+23. DB::executeQueryImpl(char const*, char const*, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum, std::unique_ptr<DB::ReadBuffer, std::default_delete<DB::ReadBuffer>>&, std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::ImplicitTransactionControlExecutor>) @ 0x000000010c58c234
+24. DB::executeQuery(std::unique_ptr<DB::ReadBuffer, std::default_delete<DB::ReadBuffer>>, DB::WriteBuffer&, bool, std::shared_ptr<DB::Context>, std::function<void (DB::QueryResultDetails const&)>, DB::QueryFlags, std::optional<DB::FormatSettings> const&, std::function<void (DB::IOutputFormat&, String const&, std::shared_ptr<DB::Context const> const&, std::optional<DB::FormatSettings> const&)>, std::function<void ()>) @ 0x000000010c590820
+25. DB::HTTPHandler::processQuery(DB::HTTPServerRequest&, DB::HTMLForm&, DB::HTTPServerResponse&, DB::HTTPHandler::Output&, std::optional<DB::CurrentThread::QueryScope>&, StrongTypedef<unsigned long, ProfileEvents::EventTag> const&) @ 0x000000010f421644
+26. DB::HTTPHandler::handleRequest(DB::HTTPServerRequest&, DB::HTTPServerResponse&, StrongTypedef<unsigned long, ProfileEvents::EventTag> const&) @ 0x000000010f424ccc
+27. DB::HTTPServerConnection::run() @ 0x000000010f4c93ac
+28. Poco::Net::TCPServerConnection::start() @ 0x0000000112e84b98
+29. Poco::Net::TCPServerDispatcher::run() @ 0x0000000112e85278
+30. Poco::PooledThread::run() @ 0x0000000112e255c8
+31. Poco::ThreadImpl::runnableEntry(void*) @ 0x0000000112e22728
+
+2025.09.22 23:35:31.477763 [ 21625677 ] {4ac9bdaa-a5aa-4617-8351-d8277fe13dc6} <Error> DynamicQueryHandler: Code: 46. DB::Exception: Function with name `JSON_EXTRACT_STRING` does not exist. In scope SELECT count() AS total_episodes, sumIf(1, JSON_EXTRACT_STRING(metadata, '$.annotation.status') = 'success') AS successful_episodes, sumIf(1, JSON_EXTRACT_STRING(metadata, '$.annotation.status') = 'failure') AS failed_episodes, sumIf(1, JSON_EXTRACT_STRING(metadata, '$.annotation.status') = 'not_classified') AS not_classified_episodes FROM episodes. Maybe you meant: ['JSONExtractString','JSONExtractUInt']. (UNKNOWN_FUNCTION), Stack trace (when copying this message, always include the lines below):
+
+0. Poco::Exception::Exception(String const&, int) @ 0x0000000112db59bc
+1. DB::Exception::Exception(DB::Exception::MessageMasked&&, int, bool) @ 0x00000001078630ac
+2. DB::Exception::Exception(String&&, int, String, bool) @ 0x0000000102433498
+3. DB::Exception::Exception(PreformattedMessage&&, int) @ 0x00000001024330a8
+4. DB::Exception::Exception<String, String, String>(int, FormatStringHelperImpl<std::type_identity<String>::type, std::type_identity<String>::type, std::type_identity<String>::type>, String&&, String&&, String&&) @ 0x00000001024e4dc4
+5. DB::QueryAnalyzer::resolveFunction(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&) @ 0x000000010bbacb18
+6. DB::QueryAnalyzer::resolveExpressionNode(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&, bool, bool, bool) @ 0x000000010bb6dde0
+7. DB::QueryAnalyzer::resolveExpressionNodeList(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&, bool, bool) @ 0x000000010bb6d4ec
+8. DB::QueryAnalyzer::resolveFunction(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&) @ 0x000000010bba79a8
+9. DB::QueryAnalyzer::resolveExpressionNode(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&, bool, bool, bool) @ 0x000000010bb6dde0
+10. DB::QueryAnalyzer::resolveExpressionNodeList(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&, bool, bool) @ 0x000000010bb6d4ec
+11. DB::QueryAnalyzer::resolveFunction(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&) @ 0x000000010bba79a8
+12. DB::QueryAnalyzer::resolveExpressionNode(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&, bool, bool, bool) @ 0x000000010bb6dde0
+13. DB::QueryAnalyzer::resolveExpressionNodeList(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&, bool, bool) @ 0x000000010bb6d4ec
+14. DB::QueryAnalyzer::resolveProjectionExpressionNodeList(std::shared_ptr<DB::IQueryTreeNode>&, DB::IdentifierResolveScope&) @ 0x000000010bb85774
+15. DB::QueryAnalyzer::resolveQuery(std::shared_ptr<DB::IQueryTreeNode> const&, DB::IdentifierResolveScope&) @ 0x000000010bb691ac
+16. DB::QueryAnalyzer::resolve(std::shared_ptr<DB::IQueryTreeNode>&, std::shared_ptr<DB::IQueryTreeNode> const&, std::shared_ptr<DB::Context const>) @ 0x000000010bb684b0
+17. DB::QueryAnalysisPass::run(std::shared_ptr<DB::IQueryTreeNode>&, std::shared_ptr<DB::Context const>) @ 0x000000010bb67aa0
+18. DB::QueryTreePassManager::run(std::shared_ptr<DB::IQueryTreeNode>) @ 0x000000010bad607c
+19. DB::buildQueryTreeAndRunPasses(std::shared_ptr<DB::IAST> const&, DB::SelectQueryOptions const&, std::shared_ptr<DB::Context const> const&, std::shared_ptr<DB::IStorage> const&) @ 0x000000010c23455c
+20. DB::InterpreterSelectQueryAnalyzer::InterpreterSelectQueryAnalyzer(std::shared_ptr<DB::IAST> const&, std::shared_ptr<DB::Context const> const&, DB::SelectQueryOptions const&, std::vector<String, std::allocator<String>> const&) @ 0x000000010c232d60
+21. std::unique_ptr<DB::IInterpreter, std::default_delete<DB::IInterpreter>> std::__function::__policy_invoker<std::unique_ptr<DB::IInterpreter, std::default_delete<DB::IInterpreter>> (DB::InterpreterFactory::Arguments const&)>::__call_impl[abi:ne190107]<std::__function::__default_alloc_func<DB::registerInterpreterSelectQueryAnalyzer(DB::InterpreterFactory&)::$_0, std::unique_ptr<DB::IInterpreter, std::default_delete<DB::IInterpreter>> (DB::InterpreterFactory::Arguments const&)>>(std::__function::__policy_storage const*, DB::InterpreterFactory::Arguments const&) @ 0x000000010c235fa4
+22. DB::InterpreterFactory::get(std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::Context>, DB::SelectQueryOptions const&) @ 0x000000010c1eb11c
+23. DB::executeQueryImpl(char const*, char const*, std::shared_ptr<DB::Context>, DB::QueryFlags, DB::QueryProcessingStage::Enum, std::unique_ptr<DB::ReadBuffer, std::default_delete<DB::ReadBuffer>>&, std::shared_ptr<DB::IAST>&, std::shared_ptr<DB::ImplicitTransactionControlExecutor>) @ 0x000000010c58c234
+24. DB::executeQuery(std::unique_ptr<DB::ReadBuffer, std::default_delete<DB::ReadBuffer>>, DB::WriteBuffer&, bool, std::shared_ptr<DB::Context>, std::function<void (DB::QueryResultDetails const&)>, DB::QueryFlags, std::optional<DB::FormatSettings> const&, std::function<void (DB::IOutputFormat&, String const&, std::shared_ptr<DB::Context const> const&, std::optional<DB::FormatSettings> const&)>, std::function<void ()>) @ 0x000000010c590820
+25. DB::HTTPHandler::processQuery(DB::HTTPServerRequest&, DB::HTMLForm&, DB::HTTPServerResponse&, DB::HTTPHandler::Output&, std::optional<DB::CurrentThread::QueryScope>&, StrongTypedef<unsigned long, ProfileEvents::EventTag> const&) @ 0x000000010f421644
+26. DB::HTTPHandler::handleRequest(DB::HTTPServerRequest&, DB::HTTPServerResponse&, StrongTypedef<unsigned long, ProfileEvents::EventTag> const&) @ 0x000000010f424ccc
+27. DB::HTTPServerConnection::run() @ 0x000000010f4c93ac
+28. Poco::Net::TCPServerConnection::start() @ 0x0000000112e84b98
+29. Poco::Net::TCPServerDispatcher::run() @ 0x0000000112e85278
+30. Poco::PooledThread::run() @ 0x0000000112e255c8
+31. Poco::ThreadImpl::runnableEntry(void*) @ 0x0000000112e22728
+ (version 25.10.1.293 (official build))
+2025.09.23 00:17:40.472072 [ 21625675 ] {13ce0dd9-7f8b-4fe0-a706-b2121e1e9ee1} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Added mutation: mutation_9.txt
+2025.09.23 00:17:40.472103 [ 21625675 ] {13ce0dd9-7f8b-4fe0-a706-b2121e1e9ee1} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Waiting mutation: mutation_9.txt
+2025.09.23 00:17:40.482088 [ 21625675 ] {13ce0dd9-7f8b-4fe0-a706-b2121e1e9ee1} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Mutation mutation_9.txt done
+2025.09.23 00:17:43.819297 [ 21625675 ] {b2aee940-84a4-497c-99df-458951891787} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Added mutation: mutation_10.txt
+2025.09.23 00:17:43.819329 [ 21625675 ] {b2aee940-84a4-497c-99df-458951891787} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Waiting mutation: mutation_10.txt
+2025.09.23 00:17:43.831799 [ 21625675 ] {b2aee940-84a4-497c-99df-458951891787} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Mutation mutation_10.txt done
+2025.09.23 00:23:07.719650 [ 21625677 ] {9d4dad9f-cfa9-42d2-95e8-001efd6675f7} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Added mutation: mutation_11.txt
+2025.09.23 00:23:09.901213 [ 21625677 ] {bc422453-ad4d-4dd1-bcca-3012e44b1c54} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Added mutation: mutation_12.txt
+2025.09.23 00:23:11.283122 [ 21625677 ] {41da2d0a-e7b0-4cd2-b37d-aa5387026648} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Added mutation: mutation_13.txt
+2025.09.23 00:23:16.156065 [ 21625677 ] {35f719ab-e024-412d-b9d7-09792ef57803} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Added mutation: mutation_14.txt
+2025.09.23 00:23:24.727444 [ 21625677 ] {00ed1762-2fb3-452c-a802-e912eb8f5bf8} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Added mutation: mutation_15.txt
+2025.09.23 00:23:35.853662 [ 21625677 ] {1eea796b-ee36-46dc-95fe-a7999b612980} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Added mutation: mutation_16.txt
+2025.09.23 00:23:41.441171 [ 21625677 ] {897e7d4b-908e-4655-a884-5d4d802ec7ef} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Added mutation: mutation_17.txt
+2025.09.23 00:24:38.091063 [ 21625675 ] {8beed50d-f66c-45aa-b315-d36ced19fdf5} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Remove 1 parts by covering them with empty 1 parts. With txn (1, 1, 00000000-0000-0000-0000-000000000000).
+2025.09.23 00:24:38.091357 [ 21625675 ] {8beed50d-f66c-45aa-b315-d36ced19fdf5} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Truncated table with 1 parts by replacing them with new empty 1 parts. With txn (1, 1, 00000000-0000-0000-0000-000000000000)
+2025.09.23 00:24:46.527382 [ 21625675 ] {e8252767-4744-48a8-a625-7de2157a8669} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_60.txt
+2025.09.23 00:24:56.642973 [ 21625675 ] {b1434798-623c-4c61-a693-5ec30f9246a3} <Information> video_episodes.processing_chunks (80c01914-cc59-42da-93a1-4a1131bb2d1e): Remove 1 parts by covering them with empty 1 parts. With txn (1, 1, 00000000-0000-0000-0000-000000000000).
+2025.09.23 00:24:56.643401 [ 21625675 ] {b1434798-623c-4c61-a693-5ec30f9246a3} <Information> video_episodes.processing_chunks (80c01914-cc59-42da-93a1-4a1131bb2d1e): Truncated table with 1 parts by replacing them with new empty 1 parts. With txn (1, 1, 00000000-0000-0000-0000-000000000000)
+2025.09.23 00:25:22.210372 [ 21625677 ] {c5bce288-d5a9-49da-92ae-5a89bc595c4f} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_61.txt
+2025.09.23 00:25:22.214823 [ 21625677 ] {76af6e8f-683b-4eba-a2f8-198b6656d37c} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_62.txt
+2025.09.23 00:25:22.214839 [ 21625677 ] {76af6e8f-683b-4eba-a2f8-198b6656d37c} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Waiting mutation: mutation_62.txt
+2025.09.23 00:25:23.262019 [ 21625677 ] {76af6e8f-683b-4eba-a2f8-198b6656d37c} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Mutation mutation_62.txt done
+2025.09.23 00:25:23.344405 [ 21625677 ] {673e3dea-139f-4247-bc02-aae065010b56} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_64.txt
+2025.09.23 00:25:23.366926 [ 21625677 ] {ba57dc32-8ae6-4281-bf66-5c3100e0b3f3} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_65.txt
+2025.09.23 00:25:23.374127 [ 21625677 ] {9eb77286-7a1e-4108-9428-3545f735cd74} <Information> video_episodes.videos (ce7af5c9-b480-435c-83bd-59bfa2c57391): Added mutation: mutation_66.txt
+2025.09.23 00:29:09.316743 [ 21940665 ] {62b533ac-c7ea-49e3-9db6-4e9dc4cd426d} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Added mutation: mutation_19.txt
+2025.09.23 00:34:20.077134 [ 21625676 ] {0bb058c7-0820-4ed4-9d15-ed858814b206} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Added mutation: mutation_20.txt
+2025.09.23 00:34:38.737776 [ 21940667 ] {749ffb59-2f23-47a2-8d83-9e9cb92286bd} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Added mutation: mutation_21.txt
+2025.09.23 00:39:53.886892 [ 21956914 ] {480b88c4-6660-476f-8cbf-d0f696d4af72} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Added mutation: mutation_22.txt
+2025.09.23 00:40:00.150884 [ 21957090 ] {e2fa70db-baab-4cc2-897b-d466fd275801} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Added mutation: mutation_23.txt
+2025.09.23 00:40:10.089313 [ 21957438 ] {eb230bda-4cd6-4c25-ba3e-30716cefed75} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Added mutation: mutation_24.txt
+2025.09.23 00:53:21.078208 [ 21978698 ] {4eafaf7f-2855-461f-af4f-d3a909b7a856} <Information> video_episodes.episodes (7c3ac3a9-3406-494e-a52a-c12aa2c0484d): Added mutation: mutation_25.txt

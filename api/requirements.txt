@@ -1,0 +1,9 @@
+# Core dependencies
+openai>=1.108.2
+ffmpeg-python>=0.2.0
+
+# Database
+clickhouse-connect>=0.6.0
+
+# Additional utilities
+python-dotenv>=1.0.0

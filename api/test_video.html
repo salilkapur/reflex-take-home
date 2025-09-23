@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Stream Test</title>
+</head>
+<body>
+    <h1>Video Stream Test - Optimized 480p</h1>
+    <video controls width="854" height="480">
+        <source src="http://localhost:8000/api/episodes/84a56636-8311-45ee-972d-5250dca8256b/stream" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <p>Episode ID: 84a56636-8311-45ee-972d-5250dca8256b</p>
+    <p>Stream URL: <a href="http://localhost:8000/api/episodes/84a56636-8311-45ee-972d-5250dca8256b/stream" target="_blank">http://localhost:8000/api/episodes/84a56636-8311-45ee-972d-5250dca8256b/stream</a></p>
+
+    <script>
+        const video = document.querySelector('video');
+        video.addEventListener('loadstart', () => console.log('Load started'));
+        video.addEventListener('canplay', () => console.log('Can play'));
+        video.addEventListener('error', (e) => console.error('Video error:', e));
+        video.addEventListener('loadeddata', () => console.log('Data loaded'));
+    </script>
+</body>
+</html>

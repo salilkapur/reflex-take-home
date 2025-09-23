@@ -1,0 +1,19 @@
+columns format version: 1
+17 columns:
+`id` String
+`video_id` String
+`episode_number` UInt32
+`start_time` Float32
+`end_time` Float32
+`duration` Float32
+`transcript` String
+`word_count` UInt32
+`words` Array(Tuple(word String, start_time Float32, end_time Float32))
+`created_at` DateTime
+`updated_at` DateTime
+`metadata` String
+`video_file_path` String
+`audio_file_path` String
+`processing_time_seconds` Float32
+`transcription_confidence` Float32
+`captions` String

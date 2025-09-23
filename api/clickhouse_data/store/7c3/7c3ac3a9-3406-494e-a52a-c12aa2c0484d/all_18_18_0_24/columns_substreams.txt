@@ -1,0 +1,41 @@
+columns substreams version: 1
+16 columns:
+1 substreams for column `id`:
+	id
+1 substreams for column `video_id`:
+	video_id
+1 substreams for column `episode_number`:
+	episode_number
+1 substreams for column `start_time`:
+	start_time
+1 substreams for column `end_time`:
+	end_time
+1 substreams for column `duration`:
+	duration
+1 substreams for column `transcript`:
+	transcript
+1 substreams for column `word_count`:
+	word_count
+4 substreams for column `words`:
+	words.size0
+	words%2Eword
+	words%2Estart_time
+	words%2Eend_time
+1 substreams for column `created_at`:
+	created_at
+1 substreams for column `updated_at`:
+	updated_at
+1 substreams for column `metadata`:
+	metadata
+2 substreams for column `video_file_path`:
+	video_file_path.sparse.idx
+	video_file_path
+2 substreams for column `audio_file_path`:
+	audio_file_path.sparse.idx
+	audio_file_path
+2 substreams for column `processing_time_seconds`:
+	processing_time_seconds.sparse.idx
+	processing_time_seconds
+2 substreams for column `transcription_confidence`:
+	transcription_confidence.sparse.idx
+	transcription_confidence

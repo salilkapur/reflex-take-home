@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<clickhouse>
+    <!-- Data storage -->
+    <path>./clickhouse_data/</path>
+    <tmp_path>./clickhouse_data/tmp/</tmp_path>
+    <user_files_path>./clickhouse_data/user_files/</user_files_path>
+
+    <!-- Network -->
+    <listen_host>127.0.0.1</listen_host>
+    <http_port>8123</http_port>
+    <tcp_port>9000</tcp_port>
+
+    <!-- Logging -->
+    <logger>
+        <level>information</level>
+        <log>./clickhouse_data/clickhouse-server.log</log>
+        <errorlog>./clickhouse_data/clickhouse-server.err.log</errorlog>
+    </logger>
+
+    <!-- Users -->
+    <users>
+        <default>
+            <password></password>
+            <networks>
+                <ip>::1</ip>
+                <ip>127.0.0.1</ip>
+            </networks>
+            <profile>default</profile>
+            <quota>default</quota>
+        </default>
+    </users>
+
+    <!-- Profiles -->
+    <profiles>
+        <default>
+            <max_memory_usage>10000000000</max_memory_usage>
+        </default>
+    </profiles>
+
+    <!-- Quotas -->
+    <quotas>
+        <default>
+            <interval>
+                <duration>3600</duration>
+                <queries>0</queries>
+                <errors>0</errors>
+                <result_rows>0</result_rows>
+                <read_rows>0</read_rows>
+                <execution_time>0</execution_time>
+            </interval>
+        </default>
+    </quotas>
+</clickhouse>

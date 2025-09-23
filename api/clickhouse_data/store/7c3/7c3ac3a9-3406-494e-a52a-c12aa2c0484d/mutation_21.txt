@@ -1,0 +1,3 @@
+format version: 1
+create time: 2025-09-23 00:34:38
+commands: (UPDATE metadata = \'{"annotation": {"status": "failure", "quality": "low", "notes": "Manually marked as failure"}, "annotated_at": "2025-09-23T00:34:38.724236"}\', updated_at = now() WHERE id = \'157cabaa-4ffe-432a-a8e4-410270f64fb5\')

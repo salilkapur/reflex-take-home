@@ -1,0 +1,19 @@
+columns format version: 1
+17 columns:
+`id` String
+`filename` String
+`file_path` String
+`file_size` UInt64
+`duration_seconds` Float32
+`chunk_length_seconds` UInt32
+`total_chunks` UInt32
+`processing_status` LowCardinality(String)
+`created_at` DateTime
+`updated_at` DateTime
+`processing_started_at` Nullable(DateTime)
+`processing_completed_at` Nullable(DateTime)
+`metadata` String
+`file_hash` String
+`total_episodes` UInt32
+`successful_episodes` UInt32
+`failed_episodes` UInt32

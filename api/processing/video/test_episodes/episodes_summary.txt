@@ -1,0 +1,24 @@
+Episode Summary
+==================================================
+
+Episode 1
+Time: 1.00s - 10.78s
+Duration: 9.78s
+Word count: 2
+Transcript: Start Finish
+------------------------------
+
+Episode 2
+Time: 12.20s - 30.92s
+Duration: 18.72s
+Word count: 16
+Transcript: Start One two three four five six seven eight nine ten eleven twelve thirteen fourteen Finish
+------------------------------
+
+Episode 3 (INCOMPLETE)
+Time: 32.52s - 32.62s
+Duration: 0.10s
+Word count: 1
+Transcript: Start
+------------------------------
+

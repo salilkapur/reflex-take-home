@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Episode Annotation Tool</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-video"></i> Video Episode Annotation Tool</h1>
+                <div class="header-stats">
+                    <div class="stat-item">
+                        <span class="stat-value" id="totalVideos">-</span>
+                        <span class="stat-label">Videos</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="totalEpisodes">-</span>
+                        <span class="stat-label">Episodes</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="completedVideos">-</span>
+                        <span class="stat-label">Completed</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Video Repository View -->
+            <div id="videoListView" class="view active">
+                <div class="view-header">
+                    <h2>Video Repository</h2>
+                    <button class="btn btn-primary" id="refreshBtn">
+                        <i class="fas fa-refresh"></i> Refresh
+                    </button>
+                </div>
+
+                <div class="video-grid" id="videoGrid">
+                    <!-- Video cards will be populated here -->
+                </div>
+            </div>
+
+            <!-- Video Detail View -->
+            <div id="videoDetailView" class="view">
+                <div class="view-header">
+                    <button class="btn btn-secondary" id="backToListBtn">
+                        <i class="fas fa-arrow-left"></i> Back to Videos
+                    </button>
+                    <h2 id="videoTitle">Video Details</h2>
+                    <div class="view-actions">
+                        <button class="btn btn-outline" id="episodeListBtn">
+                            <i class="fas fa-list"></i> List View
+                        </button>
+                        <button class="btn btn-primary" id="episodeViewerBtn">
+                            <i class="fas fa-play"></i> Episode Viewer
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Episode List -->
+                <div id="episodeList" class="episode-list">
+                    <!-- Episodes will be populated here -->
+                </div>
+
+                <!-- Episode Viewer -->
+                <div id="episodeViewer" class="episode-viewer hidden">
+                    <div class="viewer-container">
+                        <div class="video-panel">
+                            <video id="episodeVideo" controls>
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="video-controls">
+                                <button class="btn btn-secondary" id="prevEpisodeBtn">
+                                    <i class="fas fa-chevron-left"></i> Previous
+                                </button>
+                                <span id="episodeCounter">Episode 1 of 10</span>
+                                <button class="btn btn-secondary" id="nextEpisodeBtn">
+                                    Next <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="metadata-panel">
+                            <div class="episode-info">
+                                <h3 id="currentEpisodeTitle">Episode 1</h3>
+                                <div class="episode-details">
+                                    <div class="detail-item">
+                                        <label>Duration:</label>
+                                        <span id="episodeDuration">0:00</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <label>Word Count:</label>
+                                        <span id="episodeWordCount">0</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <label>Status:</label>
+                                        <span id="episodeStatus" class="status-badge">Unknown</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="transcript-section">
+                                <h4>Transcript</h4>
+                                <div class="transcript-text" id="transcriptText">
+                                    No transcript available
+                                </div>
+                            </div>
+
+                            <div class="annotation-section">
+                                <h4>Annotation</h4>
+                                <div class="annotation-controls">
+                                    <div class="annotation-buttons">
+                                        <button class="btn btn-success annotation-btn" data-status="success">
+                                            <i class="fas fa-check"></i> Success
+                                        </button>
+                                        <button class="btn btn-danger annotation-btn" data-status="failure">
+                                            <i class="fas fa-times"></i> Failure
+                                        </button>
+                                    </div>
+                                    <div class="annotation-notes">
+                                        <label for="annotationNotes">Notes:</label>
+                                        <textarea id="annotationNotes" placeholder="Add annotation notes..."></textarea>
+                                        <button class="btn btn-primary" id="saveAnnotationBtn">
+                                            <i class="fas fa-save"></i> Save Annotation
+                                        </button>
+                                    </div>
+                                </div>
+                                <div id="currentAnnotation" class="current-annotation">
+                                    <!-- Current annotation will be displayed here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="loading-overlay hidden">
+            <div class="loading-content">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Loading...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
