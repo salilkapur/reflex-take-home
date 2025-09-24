@@ -1,3 +1,0 @@
-format version: 1
-create time: 2025-09-23 00:39:53
-commands: (UPDATE metadata = \'{"annotation": {"status": "success", "quality": "high", "notes": "Manually marked as success"}, "annotated_at": "2025-09-23T00:39:53.863761"}\', updated_at = now() WHERE id = \'61779c32-8e45-4949-9149-d99ef269f6e9\')

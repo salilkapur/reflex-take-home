@@ -6,12 +6,12 @@ export interface Video {
   duration_seconds: number
   chunk_length_seconds: number
   total_chunks: number
-  processing_status: 'pending' | 'processing' | 'completed' | 'failed'
+  processing_status: 'pending' | 'processing' | 'completed' | 'failed' | 'unprocessed'
   created_at: string
   updated_at: string
   processing_started_at?: string
   processing_completed_at?: string
-  metadata?: Record<string, any>
+  metadata?: Record<string, unknown>
   file_hash: string
   total_episodes: number
   successful_episodes: number
@@ -38,12 +38,13 @@ export interface Episode {
       notes?: string
     }
     annotated_at?: string
-    [key: string]: any
+    [key: string]: unknown
   }
   video_file_path: string
   audio_file_path: string
   processing_time_seconds: number
   transcription_confidence: number
+  incomplete?: boolean
 }
 
 export interface Analytics {

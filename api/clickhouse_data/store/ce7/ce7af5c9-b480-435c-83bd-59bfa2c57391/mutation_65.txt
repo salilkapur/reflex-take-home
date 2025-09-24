@@ -1,3 +1,0 @@
-format version: 1
-create time: 2025-09-23 00:25:23
-commands: (UPDATE processing_status = \'processing\', updated_at = now(), processing_started_at = now(), total_chunks = 4 WHERE id = \'ad19e990-32ca-4b22-9c65-8b9ea1b1279f\')

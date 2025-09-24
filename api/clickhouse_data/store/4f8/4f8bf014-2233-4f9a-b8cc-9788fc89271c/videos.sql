@@ -1,4 +1,4 @@
-ATTACH TABLE _ UUID 'ce7af5c9-b480-435c-83bd-59bfa2c57391'
+ATTACH TABLE _ UUID '1c1a8494-1cdd-4f3f-8a8e-94ecca5e3e16'
 (
     `id` String,
     `filename` String,
@@ -16,10 +16,7 @@ ATTACH TABLE _ UUID 'ce7af5c9-b480-435c-83bd-59bfa2c57391'
     `file_hash` String DEFAULT '',
     `total_episodes` UInt32 DEFAULT 0,
     `successful_episodes` UInt32 DEFAULT 0,
-    `failed_episodes` UInt32 DEFAULT 0,
-    INDEX idx_filename filename TYPE bloom_filter GRANULARITY 4,
-    INDEX idx_status processing_status TYPE set(0) GRANULARITY 1,
-    INDEX idx_created created_at TYPE minmax GRANULARITY 1
+    `failed_episodes` UInt32 DEFAULT 0
 )
 ENGINE = MergeTree
 ORDER BY (id, created_at)

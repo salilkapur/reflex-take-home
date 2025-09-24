@@ -1,3 +1,0 @@
-format version: 1
-create time: 2025-09-22 23:21:40
-commands: (UPDATE processing_status = \'processing\', updated_at = now(), processing_started_at = now() WHERE id = \'5b088fcc-ce00-4ea8-bee1-47c94f59c5d1\')

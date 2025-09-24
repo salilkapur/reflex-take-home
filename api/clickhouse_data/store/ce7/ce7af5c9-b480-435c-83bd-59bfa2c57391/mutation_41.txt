@@ -1,3 +1,0 @@
-format version: 1
-create time: 2025-09-22 23:25:19
-commands: (UPDATE processing_status = \'unprocessed\', total_episodes = 0, successful_episodes = 0 WHERE id = \'ddf4492e-bc8f-43d6-b99d-ce6a8ffe1097\')

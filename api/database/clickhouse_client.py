@@ -5,18 +5,17 @@ from typing import List, Dict, Any, Optional
 from datetime import datetime
 import clickhouse_connect
 from clickhouse_connect.driver.exceptions import DatabaseError
+import threading
+import time
 
 
-class ClickHouseVideoDatabase:
-    """
-    ClickHouse database client for video episode processing.
-    Handles videos, episodes, and processing chunks with configurable metadata.
-    """
+class ClickHouseConnectionPool:
+    """Connection pool for ClickHouse clients."""
 
-    def __init__(self, host: str = 'localhost', port: int = 8123, database: str = 'video_episodes',
-                 username: str = 'default', password: str = ''):
+    def __init__(self, host: str, port: int, database: str, username: str, password: str,
+                 pool_size: int = 10, max_lifetime: int = 3600, query_timeout: int = 30):
         """
-        Initialize ClickHouse client.
+        Initialize connection pool.
 
         Args:
             host: ClickHouse server host
@@ -24,6 +23,129 @@ class ClickHouseVideoDatabase:
             database: Database name
             username: Username
             password: Password
+            pool_size: Maximum number of connections in pool
+            max_lifetime: Maximum lifetime of a connection in seconds
+            query_timeout: Query timeout in seconds
+        """
+        self.host = host
+        self.port = port
+        self.database = database
+        self.username = username
+        self.password = password
+        self.pool_size = pool_size
+        self.max_lifetime = max_lifetime
+        self.query_timeout = query_timeout
+
+        self._pool = []
+        self._lock = threading.RLock()
+        self._created_connections = 0
+
+    def _create_connection(self):
+        """Create a new ClickHouse connection with timeout settings."""
+        return {
+            'client': clickhouse_connect.get_client(
+                host=self.host,
+                port=self.port,
+                database=self.database,
+                username=self.username,
+                password=self.password,
+                connect_timeout=10,
+                send_receive_timeout=self.query_timeout,
+                settings={
+                    'max_execution_time': self.query_timeout,
+                    'max_query_size': 50000000,  # 50MB max query size
+                    'query_profiler_real_time_period_ns': 0,  # Disable profiler for performance
+                    'readonly': 0
+                }
+            ),
+            'created_at': time.time(),
+            'in_use': False
+        }
+
+    def get_connection(self):
+        """Get a connection from the pool."""
+        with self._lock:
+            # Try to find an available connection
+            for conn in self._pool:
+                if not conn['in_use']:
+                    # Check if connection is still valid (not too old)
+                    if time.time() - conn['created_at'] < self.max_lifetime:
+                        conn['in_use'] = True
+                        return conn
+                    else:
+                        # Remove expired connection
+                        self._pool.remove(conn)
+                        try:
+                            conn['client'].close()
+                        except:
+                            pass
+
+            # Create new connection if pool has space
+            if len(self._pool) < self.pool_size:
+                conn = self._create_connection()
+                conn['in_use'] = True
+                self._pool.append(conn)
+                self._created_connections += 1
+                return conn
+
+            # Pool is full, wait for a connection to be released
+            # For simplicity, create a temporary connection
+            return self._create_connection()
+
+    def return_connection(self, conn):
+        """Return a connection to the pool."""
+        with self._lock:
+            if conn in self._pool:
+                conn['in_use'] = False
+            else:
+                # This was a temporary connection, close it
+                try:
+                    conn['client'].close()
+                except:
+                    pass
+
+    def close_all(self):
+        """Close all connections in the pool."""
+        with self._lock:
+            for conn in self._pool:
+                try:
+                    conn['client'].close()
+                except:
+                    pass
+            self._pool.clear()
+
+    def get_stats(self):
+        """Get pool statistics."""
+        with self._lock:
+            in_use = sum(1 for conn in self._pool if conn['in_use'])
+            return {
+                'pool_size': len(self._pool),
+                'in_use': in_use,
+                'available': len(self._pool) - in_use,
+                'max_pool_size': self.pool_size,
+                'total_created': self._created_connections
+            }
+
+
+class ClickHouseVideoDatabase:
+    """
+    ClickHouse database client for video episode processing.
+    Handles videos, episodes, and processing chunks with configurable metadata.
+    Now uses connection pooling for better performance under concurrent load.
+    """
+
+    def __init__(self, host: str = 'localhost', port: int = 8123, database: str = 'video_episodes',
+                 username: str = 'default', password: str = '', pool_size: int = 10):
+        """
+        Initialize ClickHouse client with connection pooling.
+
+        Args:
+            host: ClickHouse server host
+            port: ClickHouse HTTP port
+            database: Database name
+            username: Username
+            password: Password
+            pool_size: Maximum number of connections in pool
         """
         self.host = host
         self.port = port
@@ -31,35 +153,70 @@ class ClickHouseVideoDatabase:
         self.username = username
         self.password = password
 
-    def _get_client(self):
-        """Get a new ClickHouse client instance for thread safety."""
-        return clickhouse_connect.get_client(
-            host=self.host,
-            port=self.port,
-            database=self.database,
-            username=self.username,
-            password=self.password
+        # Initialize connection pool
+        self._pool = ClickHouseConnectionPool(
+            host=host, port=port, database=database,
+            username=username, password=password, pool_size=pool_size
         )
+
+    def _get_client(self):
+        """Get a ClickHouse client from the connection pool."""
+        return self._pool.get_connection()
 
     @property
     def client(self):
         """Maintain backward compatibility for direct client access."""
-        return self._get_client()
+        # Note: This breaks pooling but maintains compatibility
+        conn = self._get_client()
+        return conn['client']
 
     def _execute_query(self, query: str, parameters: Dict[str, Any] = None):
-        """Execute a query with a dedicated client instance."""
-        client = self._get_client()
-        return client.query(query, parameters=parameters)
+        """Execute a query using a pooled connection with timeout handling."""
+        conn = self._get_client()
+        try:
+            result = conn['client'].query(query, parameters=parameters)
+            return result
+        except Exception as e:
+            # Log the error and re-raise
+            print(f"Query execution failed: {e}")
+            print(f"Query: {query}")
+            print(f"Parameters: {parameters}")
+            raise e
+        finally:
+            self._pool.return_connection(conn)
 
     def _execute_command(self, command: str):
-        """Execute a command with a dedicated client instance."""
-        client = self._get_client()
-        return client.command(command)
+        """Execute a command using a pooled connection with timeout handling."""
+        conn = self._get_client()
+        try:
+            result = conn['client'].command(command)
+            return result
+        except Exception as e:
+            # Log the error and re-raise
+            print(f"Command execution failed: {e}")
+            print(f"Command: {command}")
+            raise e
+        finally:
+            self._pool.return_connection(conn)
 
     def _execute_insert(self, table: str, data: list, column_names: list):
-        """Execute an insert with a dedicated client instance."""
-        client = self._get_client()
-        return client.insert(table, data, column_names=column_names)
+        """Execute an insert using a pooled connection with timeout handling."""
+        conn = self._get_client()
+        try:
+            result = conn['client'].insert(table, data, column_names=column_names)
+            return result
+        except Exception as e:
+            # Log the error and re-raise
+            print(f"Insert execution failed: {e}")
+            print(f"Table: {table}")
+            print(f"Data length: {len(data) if data else 0}")
+            raise e
+        finally:
+            self._pool.return_connection(conn)
+
+    def get_pool_stats(self):
+        """Get connection pool statistics."""
+        return self._pool.get_stats()
 
     def create_video_record(self, video_path: str, file_size: int, duration: float,
                           chunk_length: int, metadata: Dict[str, Any] = None) -> str:
@@ -272,18 +429,32 @@ class ClickHouseVideoDatabase:
         """
 
         result = self._execute_query(query, parameters={'video_id': video_id})
-        episodes = []
 
+        if not result.result_rows:
+            return []
+
+        # Get column names once, outside the loop
+        columns = result.column_names
+        metadata_col_idx = None
+
+        # Find metadata column index for faster access
+        try:
+            metadata_col_idx = columns.index('metadata')
+        except ValueError:
+            pass  # No metadata column
+
+        episodes = []
         for row in result.result_rows:
-            columns = result.column_names
             episode_data = dict(zip(columns, row))
 
-            # Parse metadata JSON
-            if episode_data.get('metadata'):
+            # Parse metadata JSON only if metadata column exists and has data
+            if metadata_col_idx is not None and row[metadata_col_idx]:
                 try:
-                    episode_data['metadata'] = json.loads(episode_data['metadata'])
-                except json.JSONDecodeError:
+                    episode_data['metadata'] = json.loads(row[metadata_col_idx])
+                except (json.JSONDecodeError, TypeError):
                     episode_data['metadata'] = {}
+            elif metadata_col_idx is not None:
+                episode_data['metadata'] = {}
 
             episodes.append(episode_data)
 
@@ -302,6 +473,66 @@ class ClickHouseVideoDatabase:
         query = f"""
         ALTER TABLE episodes UPDATE
             metadata = '{metadata_json}',
+            updated_at = now()
+        WHERE id = '{episode_id}'
+        """
+
+        self._execute_command(query)
+
+    def update_episode_annotation(self, episode_id: str, annotation_data: Dict[str, Any]):
+        """
+        Update episode annotation in metadata.
+
+        Args:
+            episode_id: Episode ID
+            annotation_data: Annotation data to update
+        """
+        # Get current metadata first
+        query = "SELECT metadata FROM episodes WHERE id = %(episode_id)s"
+        result = self._execute_query(query, parameters={'episode_id': episode_id})
+
+        if not result.result_rows:
+            raise ValueError(f"Episode {episode_id} not found")
+
+        current_metadata = result.result_rows[0][0] or "{}"
+
+        # Parse current metadata
+        try:
+            metadata = json.loads(current_metadata) if current_metadata else {}
+        except json.JSONDecodeError:
+            metadata = {}
+
+        # Update annotation section
+        if 'annotation' not in metadata:
+            metadata['annotation'] = {}
+
+        metadata['annotation'].update(annotation_data)
+        metadata_json = json.dumps(metadata)
+
+        # Update the record
+        query = f"""
+        ALTER TABLE episodes UPDATE
+            metadata = '{metadata_json}',
+            updated_at = now()
+        WHERE id = '{episode_id}'
+        """
+
+        self._execute_command(query)
+
+    def update_episode_captions(self, episode_id: str, captions: str):
+        """
+        Update episode captions.
+
+        Args:
+            episode_id: Episode ID
+            captions: Caption text
+        """
+        # Escape single quotes in captions for SQL safety
+        captions_escaped = captions.replace("'", "\\'")
+
+        query = f"""
+        ALTER TABLE episodes UPDATE
+            captions = '{captions_escaped}',
             updated_at = now()
         WHERE id = '{episode_id}'
         """
@@ -420,9 +651,8 @@ class ClickHouseVideoDatabase:
         return {}
 
     def close(self):
-        """Close the database connection."""
-        if hasattr(self.client, 'close'):
-            self.client.close()
+        """Close all database connections in the pool."""
+        self._pool.close_all()
 
 
 # Example usage and testing

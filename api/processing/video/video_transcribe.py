@@ -175,6 +175,7 @@ class VideoTranscriber:
 
                 # Save chunk processing info to database
                 if save_to_db and self.db_client and video_id:
+                    print("Saving chunk to DB")
                     word_count = len(transcription.words) if hasattr(transcription, 'words') and transcription.words else 0
                     self.db_client.save_processing_chunk(
                         video_id=video_id,
@@ -633,12 +634,12 @@ if __name__ == "__main__":
     # Initialize transcriber with database integration
     transcriber = VideoTranscriber(
         api_key=OPENAI_API_KEY,
-        chunk_length_seconds=15,
+        chunk_length_seconds=30,
         db_client=db_client
     )
 
     # Transcribe video
-    video_file = "/Users/salilkapur/work/reflex/api/processing/video/test_data/ReflexVideoData.mp4"
+    video_file = "/Users/salilkapur/work/reflex/api/data/robot_1.mp4"
 
     try:
         # Custom video metadata
@@ -652,7 +653,7 @@ if __name__ == "__main__":
         # Transcribe video in chunks (process only first 3 chunks for testing)
         video_id, chunk_results = transcriber.transcribe_video_chunked(
             video_file,
-            save_to_db=True,
+            save_to_db=False,
             video_metadata=video_metadata
         )
 
@@ -664,7 +665,7 @@ if __name__ == "__main__":
             chunk_results,
             start_word="start",
             end_word="finish",
-            save_to_db=True,
+            save_to_db=False,
             video_id=video_id
         )
 

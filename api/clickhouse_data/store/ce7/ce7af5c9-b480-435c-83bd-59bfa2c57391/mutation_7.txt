@@ -1,3 +1,0 @@
-format version: 1
-create time: 2025-09-22 21:11:42
-commands: (UPDATE processing_status = \'completed\', updated_at = now(), processing_completed_at = now(), total_episodes = 3, successful_episodes = 2, failed_episodes = 1 WHERE id = \'d545b5cf-b96f-4d09-aa60-63a55980bbd4\')
