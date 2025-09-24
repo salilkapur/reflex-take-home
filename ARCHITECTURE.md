@@ -4,46 +4,6 @@
 
 This is an annotation platform designed to analyze videos containing structured content. The system automatically transcribes video audio, extracts discrete episodes based on delimiter words, and generates visual captions using advanced Vision Language Models. The architecture is modular to scale components independently.
 
-## High-Level Architecture
-
-```mermaid
-graph TB
-    subgraph "Presentation Layer"
-        WEB[Next.js Frontend<br/>TypeScript + Tailwind]
-    end
-
-    subgraph "Gateway Layer"
-        NGINX[Nginx Reverse Proxy<br/>Load Balancing + SSL]
-    end
-
-    subgraph "Application Layer"
-        API[FastAPI Backend<br/>Async Python Services]
-    end
-
-    subgraph "AI Processing Layer"
-        STT[Speech-to-Text<br/>OpenAI Whisper]
-        VLM[Vision Language Model<br/>Google Gemini]
-    end
-
-    subgraph "Data Layer"
-        DB[(Analytics Database<br/>ClickHouse)]
-        STORAGE[Video Storage<br/>File System]
-    end
-
-    subgraph "Infrastructure"
-        PM2[Process Management<br/>PM2 Ecosystem]
-    end
-
-    WEB --> NGINX
-    NGINX --> API
-    API --> STT
-    API --> VLM
-    API --> DB
-    API --> STORAGE
-    PM2 -.-> WEB
-    PM2 -.-> API
-```
-
 ## Architectural Design Principles
 
 ### Layered Architecture Pattern
@@ -63,13 +23,10 @@ The system follows a clean layered architecture with clear separation of concern
 - Loose coupling between components
 
 **Event-Driven Processing**
+
 - Asynchronous video processing workflows
 - Background task execution for resource-intensive operations
 - Real-time status updates and progress tracking
-
-**Connection Pooling**
-- Database connection pool management for high-concurrency scenarios
-- Configurable pool sizes and connection lifecycle management
 
 **Caching Strategy**
 - Intelligent caching of transcription results to avoid reprocessing
@@ -126,33 +83,9 @@ flowchart TD
 
 ### Video Chunking Strategy
 
-The system employs an intelligent chunking strategy to handle videos of arbitrary length while maintaining processing efficiency and memory constraints.
+The system employs an intelligent chunking strategy to handle videos of arbitrary length while maintaining processing efficiency and memory constraints. Chunking video will help in scaling the service to handle multiple episodes in parallel.
 
-```mermaid
-gantt
-    title Video Chunking Timeline (90-minute video example)
-    dateFormat X
-    axisFormat %M:%S
 
-    section Audio Extraction
-    Chunk 1 (0-10min)      :chunk1, 0, 600
-    Chunk 2 (10-20min)     :chunk2, 600, 600
-    Chunk 3 (20-30min)     :chunk3, 1200, 600
-    Chunk 4 (30-40min)     :chunk4, 1800, 600
-    Chunk 5 (40-50min)     :chunk5, 2400, 600
-
-    section Transcription
-    Whisper API Call 1     :whisper1, 0, 200
-    Whisper API Call 2     :whisper2, 600, 200
-    Whisper API Call 3     :whisper3, 1200, 200
-    Whisper API Call 4     :whisper4, 1800, 200
-    Whisper API Call 5     :whisper5, 2400, 200
-
-    section Processing
-    Timestamp Adjustment   :timestamp, 1000, 500
-    Episode Detection      :episode, 1500, 800
-    Database Storage       :storage, 2300, 200
-```
 
 ### Episode Extraction Algorithm
 
@@ -185,31 +118,6 @@ flowchart TD
     L --> M
     M --> N
     N --> J
-```
-
-### Cross-Chunk Episode Handling
-
-One of the most complex architectural challenges is handling episodes that span multiple processing chunks.
-
-```mermaid
-timeline
-    title Episode Boundary Management
-
-    section Chunk 1 (0-600s)
-        Audio Transcript : Word timestamps
-                        : "start project alpha..."
-                        : No "finish" found
-
-    section Chunk 2 (600-1200s)
-        Audio Transcript : Continuing episode
-                        : "...implementation complete"
-                        : "finish project alpha"
-                        : Episode boundary detected
-
-    section Episode Assembly
-        Timestamp Merge  : Adjust all timestamps to global timeline
-        Boundary Validation : Confirm start/finish pair integrity
-        Episode Creation : Generate complete episode record
 ```
 
 ## Data Architecture
@@ -256,11 +164,6 @@ erDiagram
     VIDEOS ||--o{ PROCESSING_CHUNKS : processed_as
 ```
 
-### Connection Architecture
-- **Connection Pooling**: Thread-safe connection pool with configurable size limits
-- **Query Optimization**: Async query execution with timeout handling
-- **Analytics Optimization**: Specialized queries for dashboard metrics
-
 ## Vision Language Model Integration
 
 ### VLM Architecture Pattern
@@ -305,7 +208,6 @@ sequenceDiagram
 **Error Resilience:**
 - Automatic retry mechanisms
 - Fallback handling for API failures
-- Graceful degradation when VLM unavailable
 
 **Resource Management:**
 - Temporary file cleanup
@@ -389,11 +291,26 @@ The system follows RESTful principles with clear resource-oriented endpoints:
 - **Caching Strategy**: Hash-based transcription result caching
 - **Analytics Optimization**: ClickHouse enables complex real-time queries
 
+### Video Streaming
+
+* Video for each episode is streamed at low resolution for annotation
+* Prefetching next episode
+
+### Annotations
+
+* Each episode can be marked as a success or failure
+* Caption/Description of a video can be updated
+
 ## Future Architecture Considerations
 
+**Annotations**
+
+* Allow updating episode boundary for refining an episode
+* Annotate incomplete or miss-detected episodes
+
 **Scalability Enhancements:**
+
 - Message queue integration (Redis/RabbitMQ) for new video or asynchronous episode processing
-- Cloud storage abstraction layer
 
 **Dataset Management:**
 - Materialize episodes into individual video files
